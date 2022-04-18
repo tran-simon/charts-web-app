@@ -1,0 +1,54 @@
+{
+	"root": true,
+	"extends": [
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended"
+	],
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaVersion": 6
+	},
+	"env": {
+		"es6": true
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"plugins": [
+		"unused-imports"
+	],
+	"rules": {
+		"@typescript-eslint/no-empty-function": 0,
+		"@typescript-eslint/ban-ts-comment": 0,
+		"react/prop-types": 0,
+		"react/jsx-key": 0,
+		"react/display-name": 0,
+		"@typescript-eslint/no-explicit-any": 0,
+		"@typescript-eslint/explicit-module-boundary-types": 0,
+		"@typescript-eslint/no-unused-vars": "off",
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_", "ignoreRestSiblings": true }
+		],
+		"@typescript-eslint/ban-types": [
+			0,
+			["object"]
+		],
+		"prettier/prettier": ["error", {
+    		"endOfLine":"auto"
+  		}],
+		"react-hooks/exhaustive-deps": "error",
+		"sort-imports": [
+			"warn",
+			{
+				"ignoreDeclarationSort": true,
+				"ignoreMemberSort": true
+			}
+		]
+	}
+}
