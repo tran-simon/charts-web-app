@@ -2,13 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Main from './pages/main/Main';
 import reportWebVitals from './reportWebVitals';
+import { IntlProvider } from 'react-intl';
+import messages from './locale';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
+
+const lang = 'en';
+
 root.render(
   <React.StrictMode>
-    <Main />
+    <IntlProvider messages={messages[lang]} locale={lang}>
+      <Main />
+    </IntlProvider>
   </React.StrictMode>,
 );
 
