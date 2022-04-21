@@ -19,12 +19,30 @@ export default {
   'react-apex.type.option.rangeBar': 'Range Bar',
 
   chartOptions: 'Chart Options',
+
+  'chartOptions.annotations': 'Annotations',
+  'chartOptions.annotations.position': 'Position',
+  'chartOptions.annotations.yaxis': 'Y Axis',
+  'chartOptions.annotations.xaxis': 'X Axis',
+  'chartOptions.annotations.points': 'Poitns',
+  'chartOptions.annotations.texts': 'Texts',
+  'chartOptions.annotations.images': 'Images',
+
+  'chartOptions.chart': 'Chart',
+
   'chartOptions.title': 'Title',
   'chartOptions.title.text': 'Text',
   'chartOptions.title.align': 'Align',
   'chartOptions.title.align.option.left': 'Left',
   'chartOptions.title.align.option.right': 'Right',
   'chartOptions.title.align.option.center': 'Center',
+  'chartOptions.title.margin': 'Margin',
+  'chartOptions.title.offsetX': 'Offset X',
+  'chartOptions.title.offsetY': 'Offset Y',
   'chartOptions.title.floating': 'Floating',
   'chartOptions.title.style': 'Style',
+  'chartOptions.title.style.fontSize': 'Font Size',
+  'chartOptions.title.style.fontFamily': 'Font Family',
+  'chartOptions.title.style.fontWeight': 'Font Weight',
+  'chartOptions.title.style.color': 'Color',
 };

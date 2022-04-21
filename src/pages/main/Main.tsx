@@ -3,7 +3,7 @@ import { Container, Grid, Paper } from '@mui/material';
 import Chart from 'react-apexcharts';
 import ChartProvider, { ChartContext } from '../../providers/ChartProvider';
 import OptionSection from '../../components/optionSection/OptionSection';
-import apexOptionsSection from '../../model/apexFields/apexOptionsSection';
+import apexOptionsModel from '../../model/apexFields/apexOptionsModel';
 
 const Main = () => {
   return (
@@ -49,12 +49,7 @@ const ChartSection = () => {
 };
 
 const MainOptionsSection = () => {
-  return (
-    <OptionSection
-      model={apexOptionsSection}
-      path={[apexOptionsSection.nameId]}
-    />
-  );
+  return <OptionSection model={apexOptionsModel} path={[]} />;
 };
 
 export default Main;

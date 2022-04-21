@@ -3,7 +3,7 @@ import {
   TextField as MTextField,
   TextFieldProps as MTextFieldProps,
 } from '@mui/material';
-import { FieldProps } from './field';
+import { FieldProps } from './Field';
 import { FormattedMessage } from 'react-intl';
 import { useContext, useMemo } from 'react';
 import { ChartContext } from '../../providers/ChartProvider';
