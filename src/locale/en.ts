@@ -1,4 +1,9 @@
 export default {
+  /* Buttons */
+  'button.add': 'Add',
+
+  /* react-apexchart options */
+
   'react-apex.type.name': 'Type',
 
   'react-apex.type.option.line': 'Line',
@@ -18,10 +23,14 @@ export default {
   'react-apex.type.option.polarArea': 'Polar Area',
   'react-apex.type.option.rangeBar': 'Range Bar',
 
+  /* ApexChart options*/
+
   chartOptions: 'Chart Options',
 
   'chartOptions.annotations': 'Annotations',
   'chartOptions.annotations.position': 'Position',
+  'chartOptions.annotations.position.option.front': 'Front',
+  'chartOptions.annotations.position.option.back': 'Back',
   'chartOptions.annotations.yaxis': 'Y Axis',
   'chartOptions.annotations.xaxis': 'X Axis',
   'chartOptions.annotations.points': 'Poitns',
@@ -29,6 +38,8 @@ export default {
   'chartOptions.annotations.images': 'Images',
 
   'chartOptions.chart': 'Chart',
+
+  'chartOptions.colors': 'Colors',
 
   'chartOptions.title': 'Title',
   'chartOptions.title.text': 'Text',

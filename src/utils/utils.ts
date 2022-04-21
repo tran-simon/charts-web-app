@@ -30,4 +30,4 @@ export const numberOrNull = (value: any): number | null => {
   return !(value == null || !isFinite(value)) ? value : null;
 };
 
-export type Primitive = string | boolean | number | null;
+export type Primitive = string | boolean | number | null | undefined;

@@ -11,12 +11,12 @@ const Main = () => {
       <main>
         <Container>
           <Grid container spacing={2}>
-            <Grid item xs={3}>
+            <Grid item xs={4}>
               <Paper>
                 <MainOptionsSection />
               </Paper>
             </Grid>
-            <Grid item xs={9}>
+            <Grid item xs={8}>
               <Paper>
                 <ChartSection />
               </Paper>

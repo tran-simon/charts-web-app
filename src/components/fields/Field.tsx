@@ -8,10 +8,11 @@ import React, {
   ComponentType,
   useContext,
   useEffect,
-  useRef,
+  useMemo,
   useState,
 } from 'react';
 import debounce from 'lodash/debounce';
+import noop from 'lodash/noop';
 
 export type FieldProps<T> = {
   onSave?: SetState<T>;
@@ -44,7 +45,7 @@ export type GenericFieldProps<T extends Primitive> = MTextFieldProps &
      * @param value The primitive value from the context (if path is defined)
      * @default stringOrEmpty
      */
-    convertToString?: (value: Primitive | undefined) => string;
+    convertToString?: (value: Primitive) => string;
 
     /**
      * amount of time to wait in ms before calling onSave and updating the context
@@ -53,17 +54,19 @@ export type GenericFieldProps<T extends Primitive> = MTextFieldProps &
     debounceTimeout?: number;
   };
 
+const defaultConvert = (v: string) => v as any;
+
 const GenericField = <T extends Primitive>({
   path,
-  onSave = () => {},
+  onSave = noop,
   Comp = MTextField,
-  convert = (v) => v as any,
+  convert = defaultConvert,
   convertToString = stringOrEmpty,
   debounceTimeout = 500,
   ...props
 }: GenericFieldProps<T>) => {
   const { setOption, getOption } = useContext(ChartContext);
-  const [, setState] = useState<string>(() => {
+  const [state, setState] = useState<string>(() => {
     return (path && convertToString(getOption(path))) || '';
   });
 
@@ -71,17 +74,17 @@ const GenericField = <T extends Primitive>({
     if (path) {
       setState(stringOrEmpty(getOption(path)));
     }
-  }, [getOption, path]);
+  }, [getOption, path, setState]);
 
-  const confirm = useRef(
-    debounce((state: string) => {
+  const confirm = useMemo(() => {
+    return debounce((state: string) => {
       const value = convert(state);
       if (path != null) {
         setOption(path, value);
       }
       onSave(value);
-    }, debounceTimeout),
-  ).current;
+    }, debounceTimeout);
+  }, [convert, debounceTimeout, path, setOption, onSave]);
 
   return (
     <Comp
@@ -91,6 +94,7 @@ const GenericField = <T extends Primitive>({
         confirm(v);
       }}
       onBlur={confirm.flush}
+      value={state}
       {...props}
     />
   );

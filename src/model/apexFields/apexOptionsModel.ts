@@ -8,6 +8,11 @@ import {
 } from '../optionModel';
 import { ApexOptions } from 'apexcharts';
 
+enum AnnotationsPosition {
+  front = 'front',
+  back = 'back',
+}
+
 enum TitleAlign {
   left = 'left',
   center = 'center',
@@ -16,12 +21,15 @@ enum TitleAlign {
 
 const apexOptionsModel: Options<ApexOptions> = {
   annotations: {
-    position: new TextOptionField(),
-    yaxis: new ArrayOptionField(),
-    xaxis: new ArrayOptionField(),
-    points: new ArrayOptionField(),
-    texts: new ArrayOptionField(),
-    images: new ArrayOptionField(),
+    position: new SelectOptionField(
+      AnnotationsPosition,
+      AnnotationsPosition.front,
+    ),
+    // yaxis: new ArrayOptionField(),
+    // xaxis: new ArrayOptionField(),
+    // points: new ArrayOptionField(),
+    // texts: new ArrayOptionField(),
+    // images: new ArrayOptionField(),
   },
   chart: {
     width: null,
@@ -50,17 +58,17 @@ const apexOptionsModel: Options<ApexOptions> = {
     selection: undefined,
     animations: undefined,
   },
-  colors: new ArrayOptionField(),
+  colors: new ArrayOptionField(new TextOptionField()),
   dataLabels: undefined,
   fill: undefined,
   forecastDataPoints: undefined,
   grid: undefined,
-  labels: new ArrayOptionField(),
+  // labels: new ArrayOptionField(),
   legend: undefined,
   markers: undefined,
   noData: undefined,
   plotOptions: undefined,
-  responsive: new ArrayOptionField(),
+  // responsive: new ArrayOptionField(),
   series: null,
   states: undefined,
   stroke: undefined,
@@ -68,7 +76,7 @@ const apexOptionsModel: Options<ApexOptions> = {
   theme: undefined,
   title: {
     text: new TextOptionField(),
-    align: new SelectOptionField(TitleAlign.left, TitleAlign),
+    align: new SelectOptionField(TitleAlign, TitleAlign.left),
     margin: new NumberOptionField(),
     offsetX: new NumberOptionField(),
     offsetY: new NumberOptionField(),

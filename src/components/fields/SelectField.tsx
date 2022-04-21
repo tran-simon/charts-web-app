@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import { useContext, useMemo } from 'react';
 import { ChartContext } from '../../providers/ChartProvider';
 import React from 'react';
+import { stringOrNull } from '../../utils/utils';
 
 export type SelectFieldProps<O extends string> = MTextFieldProps &
   FieldProps<O> & {
@@ -26,9 +27,9 @@ export default <O extends string>({
 }: SelectFieldProps<O>) => {
   const { setOption, getOption } = useContext(ChartContext);
 
-  const value = useMemo(() => {
+  const value = useMemo<O>(() => {
     if (path != null) {
-      return getOption(path) || initialValue;
+      return (stringOrNull(getOption(path)) as O) || initialValue;
     }
     return initialValue;
   }, [getOption, path, initialValue]);

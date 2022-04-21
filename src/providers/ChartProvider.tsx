@@ -1,7 +1,7 @@
 import React, { createContext, ReactNode, useCallback, useState } from 'react';
 import { ApexOptions } from 'apexcharts';
 import { TypeOption } from '../model/reactApexOptions';
-import { Primitive, SetState } from '../utils/utils';
+import { SetState } from '../utils/utils';
 import noop from 'lodash/noop';
 import _get from 'lodash/get';
 import _set from 'lodash/set';
@@ -17,8 +17,8 @@ export interface IChartContext {
   setHeight?: SetState<string | number | undefined>;
   options: ApexOptions;
   setOptions: SetState<ApexOptions>;
-  setOption: (path: string[], value: Primitive) => void;
-  getOption: (path: string[]) => Primitive | undefined;
+  setOption: (path: string[], value: any) => void;
+  getOption: (path: string[]) => any;
 }
 
 export const ChartContext = createContext<IChartContext>({
@@ -52,7 +52,7 @@ export default ({ children }: { children: ReactNode }) => {
   );
 
   const setOption = useCallback(
-    (path: string[], value: Primitive) => {
+    (path: string[], value: any) => {
       setOptions((o) => {
         _set(o, path, value);
         return { ...o };

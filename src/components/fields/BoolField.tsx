@@ -17,6 +17,8 @@ export type BoolFieldProps = SwitchProps &
      * @default false
      */
     initialValue?: boolean;
+
+    fullWidth?: boolean;
   };
 
 export default ({
@@ -25,6 +27,8 @@ export default ({
   label,
   initialValue = false,
   labelProps,
+  fullWidth,
+  style = {},
   ...switchProps
 }: BoolFieldProps) => {
   const { setOption, getOption } = useContext(ChartContext);
@@ -36,6 +40,12 @@ export default ({
     return initialValue;
   }, [getOption, path, initialValue]);
 
+  if (fullWidth) {
+    style.width = '100%';
+    style.justifyContent = 'space-between';
+    style.marginRight = '0px';
+  }
+
   return (
     <FormControlLabel
       control={
@@ -43,7 +53,6 @@ export default ({
           checked={value}
           onChange={(e) => {
             const checked = !!e.target.checked;
-            console.log('ONCHANGE', checked);
             if (path != null) {
               setOption(path, checked);
             }
@@ -54,6 +63,7 @@ export default ({
       }
       label={label}
       labelPlacement="start"
+      style={style}
       {...labelProps}
     />
   );

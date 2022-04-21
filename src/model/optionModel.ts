@@ -24,7 +24,7 @@ export abstract class OptionField<T> {
 }
 
 export class TextOptionField extends OptionField<string> {
-  constructor(initialValue?: string) {
+  constructor(initialValue = '') {
     super(initialValue);
   }
 }
@@ -42,7 +42,7 @@ export class NumberOptionField extends OptionField<number> {
 export class SelectOptionField<T extends string> extends OptionField<T> {
   private readonly _options: OptionType<T>;
 
-  constructor(initialValue: T, options: OptionType<T>) {
+  constructor(options: OptionType<T>, initialValue: T) {
     super(initialValue);
     this._options = options;
   }
@@ -58,8 +58,18 @@ export class BoolOptionField extends OptionField<boolean> {
   }
 }
 
-export class ArrayOptionField<T> extends OptionField<T[]> {
-  constructor(initialValue?: T[]) {
+export class ArrayOptionField<
+  T,
+  B = Options<T> | OptionField<T>,
+> extends OptionField<T[]> {
+  private readonly _options: B;
+
+  constructor(options: B, initialValue?: T[]) {
     super(initialValue);
+    this._options = options;
+  }
+
+  get options(): B {
+    return this._options;
   }
 }
