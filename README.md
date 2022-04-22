@@ -1,6 +1,6 @@
-# DEMO
+# [PrettyCharts.app](https://prettycharts.app/)!
 
-https://charts-web-app.web.app/
+A React web application to easily create beautiful charts using ApexCharts.js
 
 # Getting Started with Create React App
 
