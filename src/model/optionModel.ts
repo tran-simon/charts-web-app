@@ -58,18 +58,24 @@ export class BoolOptionField extends OptionField<boolean> {
   }
 }
 
-export class ArrayOptionField<
-  T,
-  B = Options<T> | OptionField<T>,
-> extends OptionField<T[]> {
+export class ArrayOptionField<T, B = OptionField<T>> extends OptionField<T> {
   private readonly _options: B;
+  /**
+   * If true, when rendering the field, an option will be offered to input a singular value
+   */
+  private readonly _canBeSingular: boolean;
 
-  constructor(options: B, initialValue?: T[]) {
+  constructor(options: B, canBeSingular = false, initialValue?: T) {
     super(initialValue);
     this._options = options;
+    this._canBeSingular = canBeSingular;
   }
 
   get options(): B {
     return this._options;
+  }
+
+  get canBeSingular(): boolean {
+    return this._canBeSingular;
   }
 }

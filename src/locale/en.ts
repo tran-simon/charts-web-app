@@ -2,6 +2,9 @@ export default {
   /* Buttons */
   'button.add': 'Add',
 
+  /* Checkboxes */
+  'checkbox.list': 'List ?',
+
   /* react-apexchart options */
 
   'react-apex.type.name': 'Type',
@@ -38,8 +41,13 @@ export default {
   'chartOptions.annotations.images': 'Images',
 
   'chartOptions.chart': 'Chart',
+  'chartOptions.chart.dropShadow': 'Drop Shadow',
+  'chartOptions.chart.dropShadow.enabled': 'Enabled',
+  'chartOptions.chart.dropShadow.color': 'Color',
 
   'chartOptions.colors': 'Colors',
+
+  'chartOptions.labels': 'Labels',
 
   'chartOptions.title': 'Title',
   'chartOptions.title.text': 'Text',

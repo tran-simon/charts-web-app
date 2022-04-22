@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useMemo } from 'react';
+import React, { CSSProperties, ReactNode, useContext, useMemo } from 'react';
 import {
   FormControlLabel,
   FormControlLabelProps,
@@ -21,6 +21,12 @@ export type BoolFieldProps = SwitchProps &
     fullWidth?: boolean;
   };
 
+export const fullWidthSwitchStyle: CSSProperties = {
+  width: '100%',
+  justifyContent: 'space-between',
+  marginRight: '0px',
+};
+
 export default ({
   onSave = () => {},
   path,
@@ -41,9 +47,10 @@ export default ({
   }, [getOption, path, initialValue]);
 
   if (fullWidth) {
-    style.width = '100%';
-    style.justifyContent = 'space-between';
-    style.marginRight = '0px';
+    style = {
+      ...style,
+      ...fullWidthSwitchStyle,
+    };
   }
 
   return (

@@ -39,6 +39,10 @@ export default ({ children }: { children: ReactNode }) => {
       name: 'Series A',
       data: [1, 2, 3],
     },
+    {
+      name: 'Series b',
+      data: [3, 2, 3],
+    },
   ]);
   const [width, setWidth] = useState<string | number | undefined>();
   const [height, setHeight] = useState<string | number | undefined>();

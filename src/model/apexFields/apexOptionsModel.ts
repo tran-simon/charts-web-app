@@ -40,7 +40,10 @@ const apexOptionsModel: Options<ApexOptions> = {
     background: undefined,
     offsetX: undefined,
     offsetY: undefined,
-    dropShadow: undefined,
+    dropShadow: {
+      enabled: new BoolOptionField(),
+      color: new ArrayOptionField(new TextOptionField(), true),
+    },
     events: undefined,
     brush: undefined,
     id: undefined,
@@ -63,7 +66,7 @@ const apexOptionsModel: Options<ApexOptions> = {
   fill: undefined,
   forecastDataPoints: undefined,
   grid: undefined,
-  // labels: new ArrayOptionField(),
+  labels: new ArrayOptionField(new TextOptionField()), // TODO: This causes a bug with line charts
   legend: undefined,
   markers: undefined,
   noData: undefined,

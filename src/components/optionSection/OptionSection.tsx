@@ -4,9 +4,11 @@ import {
   AccordionDetails,
   AccordionSummary,
   Button,
+  FormControlLabel,
   IconButton,
   List,
   ListItem,
+  Checkbox,
   Typography,
 } from '@mui/material';
 import {
@@ -25,12 +27,12 @@ import TextField from '../fields/TextField';
 import NumberField from '../fields/NumberField';
 import BoolField from '../fields/BoolField';
 import { ChartContext } from '../../providers/ChartProvider';
-import { Primitive } from '../../utils/utils';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { GenericFieldProps } from '../fields/Field';
+
 export type OptionsSectionProps<T> = {
-  model: Options<T>;
+  model?: Options<T>;
   path: string[];
 
   /**
@@ -38,9 +40,20 @@ export type OptionsSectionProps<T> = {
    * if undefined, the title will be generated using a title ID built from the path
    */
   title?: ReactNode;
+
+  /**
+   * The accordion details children
+   * If not provided, defaults to OptionDetails
+   */
+  children?: ReactNode;
 };
 
-const OptionSection = <T,>({ model, path, title }: OptionsSectionProps<T>) => {
+const OptionSection = <T,>({
+  model,
+  path,
+  title,
+  children,
+}: OptionsSectionProps<T>) => {
   return (
     <Accordion
       defaultExpanded={path.length < 2}
@@ -56,9 +69,58 @@ const OptionSection = <T,>({ model, path, title }: OptionsSectionProps<T>) => {
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <OptionDetails options={model} path={path} />
+        {children ?? (model && <OptionDetails options={model} path={path} />)}
       </AccordionDetails>
     </Accordion>
+  );
+};
+
+const ArrayOptionSection = <T,>({
+  arrayOption,
+  path,
+  ...props
+}: OptionsSectionProps<T> & {
+  arrayOption: ArrayOptionField<T>;
+}) => {
+  const { setOption, getOption } = useContext(ChartContext);
+
+  const data = useMemo<T | T[]>(() => {
+    const data = getOption(path);
+    if (Array.isArray(data)) {
+      return [...data] as T[];
+    }
+    return data;
+  }, [path, getOption]);
+
+  const isArray = Array.isArray(data);
+
+  return (
+    <OptionSection path={path} {...props}>
+      {!isArray ? (
+        <OptionDetailsField option={arrayOption.options} path={path} />
+      ) : (
+        <ListOptionDetails options={arrayOption.options} path={path} />
+      )}
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={isArray}
+            onChange={() => {
+              let initialValue: T[] | T = arrayOption.initialValue ?? [];
+              if (!Array.isArray(initialValue)) {
+                initialValue = [initialValue];
+              }
+              if (isArray) {
+                setOption(path, data[0] ?? initialValue[0]);
+              } else {
+                setOption(path, data != null ? [data] : initialValue);
+              }
+            }}
+          />
+        }
+        label={<FormattedMessage id="checkbox.list" />}
+      />
+    </OptionSection>
   );
 };
 
@@ -69,9 +131,6 @@ const OptionDetails = <T,>({
   options: Options<T>;
   path: string[];
 }) => {
-  if (options instanceof OptionField) {
-    return <ListOptionDetails options={options} path={path} />;
-  }
   return (
     <List disablePadding>
       {Object.entries(options).map(([key, option], i) => {
@@ -91,7 +150,7 @@ const OptionDetails = <T,>({
   );
 };
 
-const ListOptionDetails = <T extends Primitive>({
+const ListOptionDetails = <T,>({
   options,
   path,
 }: {
@@ -178,7 +237,17 @@ const OptionDetailsField = ({
     return <OptionSection model={option} path={path} title={title} />;
   }
   if (option instanceof ArrayOptionField) {
-    return <OptionSection model={option.options} path={path} title={title} />;
+    if (option.canBeSingular) {
+      return (
+        <ArrayOptionSection path={path} arrayOption={option} title={title} />
+      );
+    } else {
+      return (
+        <OptionSection path={path} title={title}>
+          <ListOptionDetails options={option.options} path={path} />
+        </OptionSection>
+      );
+    }
   }
 
   const fieldProps = {
