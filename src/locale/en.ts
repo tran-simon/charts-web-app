@@ -5,6 +5,11 @@ export default {
   /* Checkboxes */
   'checkbox.list': 'List ?',
 
+  /* Windows */
+  'window.options-window': 'Chart Options',
+  'window.chart-window': 'Chart Preview',
+  'window.data-window': 'Chart Data',
+
   /* react-apexchart options */
 
   'react-apex.type.name': 'Type',
@@ -27,8 +32,6 @@ export default {
   'react-apex.type.option.rangeBar': 'Range Bar',
 
   /* ApexChart options*/
-
-  chartOptions: 'Chart Options',
 
   'chartOptions.annotations': 'Annotations',
   'chartOptions.annotations.position': 'Position',

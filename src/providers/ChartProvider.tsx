@@ -11,10 +11,6 @@ export interface IChartContext {
   setType: SetState<TypeOption>;
   series: ApexOptions['series'];
   setSeries: SetState<ApexOptions['series']>;
-  width?: string | number;
-  setWidth?: SetState<string | number | undefined>;
-  height?: string | number;
-  setHeight?: SetState<string | number | undefined>;
   options: ApexOptions;
   setOptions: SetState<ApexOptions>;
   setOption: (path: string[], value: any) => void;
@@ -44,8 +40,6 @@ export default ({ children }: { children: ReactNode }) => {
       data: [3, 2, 3],
     },
   ]);
-  const [width, setWidth] = useState<string | number | undefined>();
-  const [height, setHeight] = useState<string | number | undefined>();
   const [options, setOptions] = useState<ApexOptions>({});
 
   const getOption = useCallback(
@@ -72,10 +66,6 @@ export default ({ children }: { children: ReactNode }) => {
         setType,
         series,
         setSeries,
-        width,
-        setWidth,
-        height,
-        setHeight,
         options,
         getOption,
         setOptions,

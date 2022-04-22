@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useCallback } from 'react';
+import { IntlShape, useIntl } from 'react-intl';
 
 export type SetState<T> = Dispatch<SetStateAction<T>>;
 
@@ -31,3 +32,18 @@ export const numberOrNull = (value: any): number | null => {
 };
 
 export type Primitive = string | boolean | number | null | undefined;
+
+export const useIntlFormatter = (): {
+  (id: string, values?: Record<string, Primitive>): string;
+} & IntlShape => {
+  const intl = useIntl();
+
+  const fn = useCallback(
+    (id: string, values?: Record<string, Primitive>) =>
+      intl.formatMessage({ id }, values),
+    [intl],
+  );
+
+  Object.assign(fn, intl);
+  return fn as any;
+};

@@ -124,12 +124,12 @@ const ArrayOptionSection = <T,>({
   );
 };
 
-const OptionDetails = <T,>({
+export const OptionDetails = <T,>({
   options,
-  path,
+  path = [],
 }: {
   options: Options<T>;
-  path: string[];
+  path?: string[];
 }) => {
   return (
     <List disablePadding>
