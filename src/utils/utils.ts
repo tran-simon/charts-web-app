@@ -2,6 +2,9 @@ import { Dispatch, SetStateAction, useCallback } from 'react';
 import { IntlShape, useIntl } from 'react-intl';
 
 export type SetState<T> = Dispatch<SetStateAction<T>>;
+export type Primitive = string | boolean | number | null | undefined;
+export type Path = ReadonlyArray<string | number | symbol>;
+export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
 /**
  * Get the value as a String if it is valid.
@@ -31,8 +34,6 @@ export const numberOrNull = (value: any): number | null => {
   return !(value == null || !isFinite(value)) ? value : null;
 };
 
-export type Primitive = string | boolean | number | null | undefined;
-
 export const useIntlFormatter = (): {
   (id: string, values?: Record<string, Primitive>): string;
 } & IntlShape => {
@@ -46,4 +47,21 @@ export const useIntlFormatter = (): {
 
   Object.assign(fn, intl);
   return fn as any;
+};
+
+/**
+ * Extract a labelId to use with react-intl by taking the path, filtering out
+ * non-string values and joining with dots.
+ *
+ * @param path The path ex: ['path', 1, 'to', 'location']
+ * @param prefix Prefix for the resulting id
+ * @return a string in the format 'path.to.location'
+ */
+export const getLabelIdFromPath = (path: Path, prefix?: string) => {
+  const newPath = [...path];
+  if (prefix != null) {
+    newPath.unshift(prefix);
+  }
+
+  return newPath.filter((v) => typeof v === 'string').join('.');
 };

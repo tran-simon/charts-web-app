@@ -1,57 +1,55 @@
 import {
-  MenuItem,
+  Autocomplete,
+  AutocompleteProps,
   TextField as MTextField,
-  TextFieldProps as MTextFieldProps,
 } from '@mui/material';
 import { FieldProps } from './Field';
-import { FormattedMessage } from 'react-intl';
-import { useContext, useMemo } from 'react';
-import { ChartContext } from '../../providers/ChartProvider';
+import { ReactNode, useContext, useMemo } from 'react';
 import React from 'react';
-import { stringOrNull } from '../../utils/utils';
+import { PartialBy, stringOrNull, useIntlFormatter } from '../../utils/utils';
+import { SelectOptions, SelectOptionType } from '../../model/optionModel';
 
-export type SelectFieldProps<O extends string> = MTextFieldProps &
-  FieldProps<O> & {
-    options: O[];
-    getOptionLabel?: (o: O) => string;
-    initialValue: O;
+export type SelectFieldProps<T extends string, C extends object> = Omit<
+  PartialBy<
+    AutocompleteProps<SelectOptionType, false, false, false>,
+    'renderInput'
+  >,
+  'options'
+> &
+  FieldProps<T | undefined, C> & {
+    label: ReactNode;
+    options: SelectOptions<T>;
   };
 
-export default <O extends string>({
-  options,
-  initialValue,
-  getOptionLabel = (v) => v,
+export default <T extends string, C extends object>({
   onSave = () => {},
   path,
+  Context,
+  options,
+  label,
   ...props
-}: SelectFieldProps<O>) => {
-  const { setOption, getOption } = useContext(ChartContext);
+}: SelectFieldProps<T, C>) => {
+  const t = useIntlFormatter();
+  const { setOption, getOption } = useContext(Context);
 
-  const value = useMemo<O>(() => {
-    if (path != null) {
-      return (stringOrNull(getOption(path)) as O) || initialValue;
-    }
-    return initialValue;
-  }, [getOption, path, initialValue]);
+  const value = useMemo<T | undefined>(() => {
+    return (path && (stringOrNull(getOption(path)) as T | null)) || undefined;
+  }, [path, getOption]);
 
   return (
-    <MTextField
-      select
-      onChange={(e) => {
-        const value = e.target.value;
+    <Autocomplete<SelectOptionType, false, false, false>
+      renderInput={(params) => <MTextField label={label} {...params} />}
+      getOptionLabel={(option) => t(option.labelId)}
+      value={(value && options[value]) ?? null}
+      onChange={(e, newValue) => {
+        const value = (newValue?.value as T | undefined) ?? undefined;
         if (path != null) {
           setOption(path, value);
         }
-        onSave(value as any);
+        onSave(value);
       }}
-      value={value}
+      options={Object.values(options)}
       {...props}
-    >
-      {options.map((v, i) => (
-        <MenuItem key={i} value={v}>
-          <FormattedMessage id={getOptionLabel(v)} />
-        </MenuItem>
-      ))}
-    </MTextField>
+    />
   );
 };

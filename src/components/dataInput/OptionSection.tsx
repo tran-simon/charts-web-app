@@ -10,6 +10,7 @@ import {
   ListItem,
   Checkbox,
   Typography,
+  Box,
 } from '@mui/material';
 import {
   ArrayOptionField,
@@ -26,14 +27,15 @@ import SelectField from '../fields/SelectField';
 import TextField from '../fields/TextField';
 import NumberField from '../fields/NumberField';
 import BoolField from '../fields/BoolField';
-import { ChartContext } from '../../providers/ChartProvider';
+import { WithContext } from '../../providers/ChartProviders';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { GenericFieldProps } from '../fields/Field';
+import { ApexOptions } from 'apexcharts';
+import { getLabelIdFromPath, Path } from '../../utils/utils';
 
-export type OptionsSectionProps<T> = {
+export type OptionsSectionProps<T, C extends object> = WithContext<C> & {
   model?: Options<T>;
-  path: string[];
+  path: Path;
 
   /**
    * Title of the section
@@ -48,12 +50,13 @@ export type OptionsSectionProps<T> = {
   children?: ReactNode;
 };
 
-const OptionSection = <T,>({
+const OptionSection = <T, C extends object>({
   model,
   path,
   title,
   children,
-}: OptionsSectionProps<T>) => {
+  Context,
+}: OptionsSectionProps<T, C>) => {
   return (
     <Accordion
       defaultExpanded={path.length < 2}
@@ -64,25 +67,31 @@ const OptionSection = <T,>({
       <AccordionSummary>
         <Typography>
           {title ?? (
-            <FormattedMessage id={['chartOptions', ...path].join('.')} />
+            <FormattedMessage
+              id={getLabelIdFromPath(path, Context.displayName)}
+            />
           )}
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        {children ?? (model && <OptionDetails options={model} path={path} />)}
+        {children ??
+          (model && (
+            <OptionDetails options={model} path={path} Context={Context} />
+          ))}
       </AccordionDetails>
     </Accordion>
   );
 };
 
-const ArrayOptionSection = <T,>({
+const ArrayOptionSection = <T, C extends object>({
   arrayOption,
   path,
+  Context,
   ...props
-}: OptionsSectionProps<T> & {
-  arrayOption: ArrayOptionField<T>;
+}: OptionsSectionProps<T, C> & {
+  arrayOption: ArrayOptionField;
 }) => {
-  const { setOption, getOption } = useContext(ChartContext);
+  const { setOption, getOption } = useContext(Context);
 
   const data = useMemo<T | T[]>(() => {
     const data = getOption(path);
@@ -94,26 +103,24 @@ const ArrayOptionSection = <T,>({
 
   const isArray = Array.isArray(data);
 
+  const options = arrayOption.options;
+
   return (
-    <OptionSection path={path} {...props}>
+    <OptionSection Context={Context} path={path} {...props}>
       {!isArray ? (
-        <OptionDetailsField option={arrayOption.options} path={path} />
+        <OptionDetailsField Context={Context} option={options} path={path} />
       ) : (
-        <ListOptionDetails options={arrayOption.options} path={path} />
+        <ListOptionDetails Context={Context} options={options} path={path} />
       )}
       <FormControlLabel
         control={
           <Checkbox
             checked={isArray}
             onChange={() => {
-              let initialValue: T[] | T = arrayOption.initialValue ?? [];
-              if (!Array.isArray(initialValue)) {
-                initialValue = [initialValue];
-              }
               if (isArray) {
-                setOption(path, data[0] ?? initialValue[0]);
+                setOption(path, data[0]);
               } else {
-                setOption(path, data != null ? [data] : initialValue);
+                setOption(path, data != null ? [data] : []);
               }
             }}
           />
@@ -124,12 +131,13 @@ const ArrayOptionSection = <T,>({
   );
 };
 
-export const OptionDetails = <T,>({
+export const OptionDetails = <T, C extends object>({
   options,
   path = [],
-}: {
+  Context,
+}: WithContext<C> & {
   options: Options<T>;
-  path?: string[];
+  path?: Path;
 }) => {
   return (
     <List disablePadding>
@@ -142,6 +150,7 @@ export const OptionDetails = <T,>({
             <OptionDetailsField
               option={option as Option}
               path={[...path, key]}
+              Context={Context}
             />
           </ListItem>
         );
@@ -150,14 +159,15 @@ export const OptionDetails = <T,>({
   );
 };
 
-const ListOptionDetails = <T,>({
+const ListOptionDetails = <T, C extends object>({
   options,
   path,
-}: {
-  options: OptionField<T>;
-  path: string[];
+  Context,
+}: WithContext<C> & {
+  options: OptionField;
+  path: Path;
 }) => {
-  const { setOption, getOption } = useContext(ChartContext);
+  const { setOption, getOption } = useContext(Context);
 
   const data = useMemo<T[]>(() => {
     const data = getOption(path);
@@ -170,28 +180,32 @@ const ListOptionDetails = <T,>({
   return (
     <List disablePadding>
       {data.map((v, i) => {
-        const elPath = [...path, i as any];
+        const elPath = [...path, i];
         return (
-          <ListItem disableGutters key={i}>
-            <OptionDetailsField
-              title={i}
-              option={options}
-              path={elPath}
-              genericFieldProps={{
-                InputProps: {
-                  endAdornment: (
-                    <IconButton
-                      onClick={() => {
-                        data.splice(i, 1);
-                        setOption(path, data.length ? [...data] : undefined);
-                      }}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  ),
-                },
+          <ListItem
+            disableGutters
+            key={i}
+            style={{
+              justifyContent: 'space-between',
+            }}
+          >
+            <Box flexGrow={1} marginRight={1}>
+              <OptionDetailsField
+                title={i}
+                option={options}
+                path={elPath}
+                Context={Context}
+              />
+            </Box>
+            <IconButton
+              onClick={() => {
+                const newData = [...data];
+                newData.splice(i, 1);
+                setOption(path, newData.length ? [...newData] : undefined);
               }}
-            />
+            >
+              <DeleteIcon />
+            </IconButton>
           </ListItem>
         );
       })}
@@ -200,7 +214,7 @@ const ListOptionDetails = <T,>({
           color="info"
           startIcon={<AddIcon />}
           onClick={() => {
-            setOption(path, [...data, options.initialValue]);
+            setOption(path, [...data, undefined]);
           }}
           fullWidth
         >
@@ -211,40 +225,49 @@ const ListOptionDetails = <T,>({
   );
 };
 
-const OptionDetailsField = ({
+export const OptionDetailsField = <C extends object = ApexOptions>({
   option,
   path,
   title,
-  genericFieldProps,
-}: {
+  Context,
+}: WithContext<C> & {
   option: Option;
-  path: string[];
+  path: Path;
 
   /**
    * Title of the field
    * if undefined, the title will be generated using a title ID built from the path
    */
   title?: ReactNode;
-
-  /**
-   * To customize the field rendered
-   *
-   * Only used if applicable.
-   */
-  genericFieldProps?: Partial<GenericFieldProps<any>>;
 }) => {
   if (!(option instanceof OptionField)) {
-    return <OptionSection model={option} path={path} title={title} />;
+    return (
+      <OptionSection
+        model={option}
+        path={path}
+        title={title}
+        Context={Context}
+      />
+    );
   }
   if (option instanceof ArrayOptionField) {
     if (option.canBeSingular) {
       return (
-        <ArrayOptionSection path={path} arrayOption={option} title={title} />
+        <ArrayOptionSection
+          Context={Context}
+          path={path}
+          arrayOption={option}
+          title={title}
+        />
       );
     } else {
       return (
-        <OptionSection path={path} title={title}>
-          <ListOptionDetails options={option.options} path={path} />
+        <OptionSection Context={Context} path={path} title={title}>
+          <ListOptionDetails
+            Context={Context}
+            options={option.options}
+            path={path}
+          />
         </OptionSection>
       );
     }
@@ -253,29 +276,20 @@ const OptionDetailsField = ({
   const fieldProps = {
     path,
     fullWidth: true,
+    Context,
     label: title ?? (
-      <FormattedMessage id={['chartOptions', ...path].join('.')} />
+      <FormattedMessage id={getLabelIdFromPath(path, Context.displayName)} />
     ),
   };
 
   if (option instanceof TextOptionField) {
-    return <TextField {...fieldProps} {...genericFieldProps} />;
+    return <TextField {...fieldProps} />;
   }
   if (option instanceof NumberOptionField) {
-    return <NumberField {...fieldProps} {...genericFieldProps} />;
+    return <NumberField {...fieldProps} />;
   }
   if (option instanceof SelectOptionField) {
-    return (
-      <SelectField
-        {...fieldProps}
-        getOptionLabel={(v) =>
-          ['chartOptions', ...path, 'option', option.options[v]].join('.')
-        }
-        options={Object.keys(option.options)}
-        initialValue={option.initialValue}
-        {...genericFieldProps}
-      />
-    );
+    return <SelectField {...fieldProps} options={option.options} />;
   }
   if (option instanceof BoolOptionField) {
     return <BoolField {...fieldProps} />;

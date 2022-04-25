@@ -6,10 +6,10 @@ import {
   SwitchProps,
 } from '@mui/material';
 import { FieldProps } from './Field';
-import { ChartContext } from '../../providers/ChartProvider';
+import { ApexOptions } from 'apexcharts';
 
-export type BoolFieldProps = SwitchProps &
-  FieldProps<boolean> & {
+export type BoolFieldProps<C extends object> = SwitchProps &
+  FieldProps<boolean, C> & {
     label?: ReactNode;
     labelProps?: Partial<FormControlLabelProps>;
     /**
@@ -27,7 +27,7 @@ export const fullWidthSwitchStyle: CSSProperties = {
   marginRight: '0px',
 };
 
-export default ({
+export default <C extends object = ApexOptions>({
   onSave = () => {},
   path,
   label,
@@ -35,9 +35,10 @@ export default ({
   labelProps,
   fullWidth,
   style = {},
+  Context,
   ...switchProps
-}: BoolFieldProps) => {
-  const { setOption, getOption } = useContext(ChartContext);
+}: BoolFieldProps<C>) => {
+  const { setOption, getOption } = useContext(Context);
 
   const value = useMemo(() => {
     if (path != null) {
@@ -59,7 +60,7 @@ export default ({
         <Switch
           checked={value}
           onChange={(e) => {
-            const checked = !!e.target.checked;
+            const checked = e.target.checked;
             if (path != null) {
               setOption(path, checked);
             }

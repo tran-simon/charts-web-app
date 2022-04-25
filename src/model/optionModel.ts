@@ -1,6 +1,6 @@
 export type Option<T = any, key extends keyof T = keyof T> =
   | Options<T[key]>
-  | OptionField<T[key]>;
+  | OptionField;
 
 /**
  * TODO: dont allow undefined
@@ -9,69 +9,78 @@ export type Option<T = any, key extends keyof T = keyof T> =
  */
 export type Options<T> = { [key in keyof T]: Option<T, key> | null };
 
+export enum FieldType {
+  Bool,
+  Text,
+  Select,
+  Number,
+}
+
 /* Option Fields */
 
-export abstract class OptionField<T> {
-  private readonly _initialValue?: T;
+export abstract class OptionField {
+  private readonly _type: FieldType;
 
-  protected constructor(initialValue?: T) {
-    this._initialValue = initialValue;
+  protected constructor(type: FieldType) {
+    this._type = type;
   }
 
-  get initialValue(): T | undefined {
-    return this._initialValue;
-  }
-}
-
-export class TextOptionField extends OptionField<string> {
-  constructor(initialValue = '') {
-    super(initialValue);
+  get type(): FieldType {
+    return this._type;
   }
 }
 
-type OptionType<O extends string> = {
-  [key in O]: string;
+export class TextOptionField extends OptionField {
+  constructor() {
+    super(FieldType.Text);
+  }
+}
+
+export type SelectOptionType = {
+  labelId: string;
+  value: string;
 };
+export type SelectOptions<T extends string> = { [key in T]: SelectOptionType };
 
-export class NumberOptionField extends OptionField<number> {
-  constructor(initialValue?: number) {
-    super(initialValue);
+export class NumberOptionField extends OptionField {
+  constructor() {
+    super(FieldType.Number);
   }
 }
 
-export class SelectOptionField<T extends string> extends OptionField<T> {
-  private readonly _options: OptionType<T>;
+export class SelectOptionField<T extends string> extends OptionField {
+  private readonly _options: SelectOptions<T>;
 
-  constructor(options: OptionType<T>, initialValue: T) {
-    super(initialValue);
+  constructor(options: SelectOptions<T>) {
+    super(FieldType.Select);
     this._options = options;
   }
 
-  get options(): OptionType<T> {
+  get options(): SelectOptions<T> {
     return this._options;
   }
 }
 
-export class BoolOptionField extends OptionField<boolean> {
-  constructor(initialValue?: boolean) {
-    super(initialValue);
+export class BoolOptionField extends OptionField {
+  constructor() {
+    super(FieldType.Bool);
   }
 }
 
-export class ArrayOptionField<T, B = OptionField<T>> extends OptionField<T> {
-  private readonly _options: B;
+export class ArrayOptionField extends OptionField {
+  private readonly _options: OptionField;
   /**
    * If true, when rendering the field, an option will be offered to input a singular value
    */
   private readonly _canBeSingular: boolean;
 
-  constructor(options: B, canBeSingular = false, initialValue?: T) {
-    super(initialValue);
+  constructor(options: OptionField, canBeSingular = false) {
+    super(options.type);
     this._options = options;
     this._canBeSingular = canBeSingular;
   }
 
-  get options(): B {
+  get options(): OptionField {
     return this._options;
   }
 

@@ -1,8 +1,11 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { Box, styled } from '@mui/material';
 import Chart from 'react-apexcharts';
-import ChartProvider, { ChartContext } from '../../providers/ChartProvider';
-import { OptionDetails } from '../../components/optionSection/OptionSection';
+import ChartProviders, {
+  ChartContext,
+  ChartPropsContext,
+} from '../../providers/ChartProviders';
+import { OptionDetails } from '../../components/dataInput/OptionSection';
 import apexOptionsModel from '../../model/apexFields/apexOptionsModel';
 import { Mosaic, MosaicWindow } from 'react-mosaic-component';
 
@@ -10,6 +13,7 @@ import { MosaicKey } from 'react-mosaic-component/lib/types';
 import { useIntlFormatter } from '../../utils/utils';
 import './app.css';
 import 'react-mosaic-component/react-mosaic-component.css';
+import cloneDeep from 'lodash/cloneDeep';
 
 declare module 'react-mosaic-component' {
   /*
@@ -38,7 +42,7 @@ const Main = () => {
   const windowMap: { [key in ViewId]: ReactNode } = {
     'options-window': (
       <WindowContent overflow="auto" paddingX={2}>
-        <OptionDetails options={apexOptionsModel} />
+        <OptionDetails Context={ChartContext} options={apexOptionsModel} />
       </WindowContent>
     ),
     'chart-window': (
@@ -46,11 +50,16 @@ const Main = () => {
         <ChartSection />
       </WindowContent>
     ),
-    'data-window': <WindowContent padding={2}>atest</WindowContent>,
+    'data-window': (
+      <WindowContent padding={2}>
+        {/*TODO*/}
+        wip
+      </WindowContent>
+    ),
   };
 
   return (
-    <ChartProvider>
+    <ChartProviders>
       <main>
         <Mosaic<string>
           renderTile={(id, path) => (
@@ -75,26 +84,24 @@ const Main = () => {
           }}
         />
       </main>
-    </ChartProvider>
+    </ChartProviders>
   );
 };
 
 const ChartSection = () => {
-  const { type, options, series } = useContext(ChartContext);
+  const { options: chartProps } = useContext(ChartPropsContext);
+  const { options } = useContext(ChartContext);
   const [state, setState] = useState(0);
 
   useEffect(() => {
     setState((s) => ++s);
-  }, [options, type]);
+  }, [options, chartProps, setState]);
 
   return (
     <Chart
       key={state} // TODO: This is a temporary workaround to force the chart to re-render an option changes
-      height={'100%'}
-      width={'100%'}
-      type={type}
-      options={options}
-      series={series}
+      options={cloneDeep(options)}
+      {...chartProps}
     />
   );
 };
