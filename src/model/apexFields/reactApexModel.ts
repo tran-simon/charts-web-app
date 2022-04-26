@@ -34,42 +34,66 @@ export interface IReactApex {
   options?: ApexOptions;
 }
 
-export const apexAxisChartSeriesOptions: Options<ApexAxisChartSeries[number]> =
-  {
-    name: new TextOptionField({
-      disableClearable: true,
-    }),
-    type: new SelectOptionField(
-      {
-        line: {
-          labelId: 'ChartPropsContext.series.type.option.line',
-          value: 'line',
-        },
-        area: {
-          labelId: 'ChartPropsContext.series.type.option.area',
-          value: 'area',
-        },
-        column: {
-          labelId: 'ChartPropsContext.series.type.option.column',
-          value: 'column',
-        },
-        bar: {
-          labelId: 'ChartPropsContext.series.type.option.bar',
-          value: 'bar',
-        },
-        scatter: {
-          labelId: 'ChartPropsContext.series.type.option.scatter',
-          value: 'scatter',
-        },
-        bubble: {
-          labelId: 'ChartPropsContext.series.type.option.bubble',
-          value: 'bubble',
-        },
-      },
-      {
-        disableClearable: true,
-      },
-    ),
-    color: new TextOptionField(),
-    data: new ListOptionField(new NumberOptionField()),
-  };
+export enum SeriesDataType {
+  singleValues = 'singleValues',
+  pairedValues = 'pairedValues',
+  complexPairedValues = 'complexPairedValues',
+}
+
+export const seriesDataType = {
+  [SeriesDataType.singleValues]: {
+    value: 'singleValues',
+    labelId: 'ChartPropsContext.series.dataType.option.singleValues',
+  },
+  [SeriesDataType.pairedValues]: {
+    value: 'pairedValues',
+    labelId: 'ChartPropsContext.series.dataType.option.pairedValues',
+  },
+  [SeriesDataType.complexPairedValues]: {
+    value: 'complexPairedValues',
+    labelId: 'ChartPropsContext.series.dataType.option.complexPairedValues',
+  },
+};
+
+export const apexAxisChartSeriesOptions: Options<
+  ApexAxisChartSeries[number] & {
+    // TODO: decide if keep this in?
+    dataType: SeriesDataType;
+  }
+> = {
+  name: new TextOptionField({
+    disableClearable: true,
+  }),
+  type: new SelectOptionField({
+    line: {
+      labelId: 'ChartPropsContext.series.type.option.line',
+      value: 'line',
+    },
+    area: {
+      labelId: 'ChartPropsContext.series.type.option.area',
+      value: 'area',
+    },
+    column: {
+      labelId: 'ChartPropsContext.series.type.option.column',
+      value: 'column',
+    },
+    bar: {
+      labelId: 'ChartPropsContext.series.type.option.bar',
+      value: 'bar',
+    },
+    scatter: {
+      labelId: 'ChartPropsContext.series.type.option.scatter',
+      value: 'scatter',
+    },
+    bubble: {
+      labelId: 'ChartPropsContext.series.type.option.bubble',
+      value: 'bubble',
+    },
+  }),
+  color: new TextOptionField(),
+  data: new ListOptionField(new NumberOptionField()),
+  dataType: new SelectOptionField(seriesDataType, {
+    disableClearable: true,
+    fallbackValue: seriesDataType[SeriesDataType.singleValues],
+  }),
+};

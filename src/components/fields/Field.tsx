@@ -1,4 +1,4 @@
-import { Path, Primitive, SetState, stringOrEmpty } from '../../utils/utils';
+import { Path, SetState, stringOrEmpty } from '../../utils/utils';
 import {
   IconButton,
   InputAdornment,
@@ -26,10 +26,7 @@ export type FieldProps<T, C extends object> = WithContext<C> & {
   path?: Path;
 };
 
-export type GenericFieldProps<
-  T extends Primitive,
-  C extends object,
-> = MTextFieldProps &
+export type GenericFieldProps<T, C extends object> = MTextFieldProps &
   FieldProps<T, C> & {
     /**
      * Component used to render the field
@@ -51,7 +48,7 @@ export type GenericFieldProps<
      * @param value The primitive value from the context (if path is defined)
      * @default stringOrEmpty
      */
-    convertToString?: (value: Primitive) => string;
+    convertToString?: (value: unknown) => string;
 
     /**
      * amount of time to wait in ms before calling onSave and updating the context
@@ -64,7 +61,7 @@ export type GenericFieldProps<
 
 const defaultConvert = (v: string | undefined) => v as any;
 
-const GenericField = <T extends Primitive, C extends object>({
+const GenericField = <T, C extends object>({
   path,
   onSave = noop,
   Comp = MTextField,
@@ -83,9 +80,9 @@ const GenericField = <T extends Primitive, C extends object>({
 
   useEffect(() => {
     if (path) {
-      setState(stringOrEmpty(getOption(path)));
+      setState(convertToString(getOption(path)) || '');
     }
-  }, [getOption, path, setState]);
+  }, [getOption, path, setState, convertToString]);
 
   const confirm = useMemo(() => {
     return debounce((state: string | undefined) => {

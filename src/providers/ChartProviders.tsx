@@ -91,19 +91,16 @@ export default ({ children }: { children: ReactNode }) => {
           series: [
             {
               name: 'Series A',
-              data: [1, 2, 3],
+              type: 'column',
+              data: [5, 2, 3],
             },
             {
               name: 'Series b',
+              type: 'line',
               data: [
-                {
-                  x: 1,
-                  y: 3,
-                },
-                {
-                  x: 4,
-                  y: 2,
-                },
+                [1.5, 3],
+                [2, 1],
+                [4, 4],
               ],
             },
           ],

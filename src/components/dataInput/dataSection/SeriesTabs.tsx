@@ -13,6 +13,7 @@ import {
   DialogTitle,
   Divider,
   IconButton,
+  ListItemIcon,
   Menu,
   MenuItem,
   MenuProps,
@@ -20,11 +21,11 @@ import {
   Tabs,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { TypeOption } from '../../../model/apexFields/reactApexModel';
 import AddIcon from '@mui/icons-material/Add';
 import { FormattedMessage } from 'react-intl';
 import noop from 'lodash/noop';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export type ISeriesTabsContext = {
   tab: number;
@@ -140,6 +141,7 @@ const SeriesTab = ({
     options: { series = [] },
   } = useContext(ChartPropsContext);
   const { setTab } = useContext(SeriesTabsContext);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const seriesVal = series[id];
 
@@ -149,33 +151,41 @@ const SeriesTab = ({
   }
 
   return (
-    <Tab
-      value={id}
-      onClick={() => setTab(id)}
-      label={
-        <Box
-          sx={{
-            width: '100%',
-            height: '100%',
+    <>
+      <Tab
+        value={id}
+        onClick={() => setTab(id)}
+        onContextMenu={(e) => {
+          e.preventDefault();
+          setAnchorEl(e.currentTarget);
+        }}
+        label={seriesVal.name}
+      />
+      <Menu
+        open={!!anchorEl}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        onClose={() => setAnchorEl(null)}
+      >
+        <MenuItem
+          onClick={() => {
+            openConfirmDialog();
           }}
         >
-          {seriesVal.name}
-          <IconButton
-            size="small"
-            onMouseDown={(e) => e.stopPropagation()}
-            onClick={(e) => {
-              e.stopPropagation();
-              openConfirmDialog();
-            }}
-            sx={{
-              marginLeft: 2,
-            }}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Box>
-      }
-    />
+          <ListItemIcon>
+            <DeleteOutlineIcon />
+          </ListItemIcon>
+          <FormattedMessage id="menu.delete" />
+        </MenuItem>
+      </Menu>
+    </>
   );
 };
 

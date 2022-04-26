@@ -22,7 +22,7 @@ export type SelectFieldProps<
   'options'
 > &
   FieldProps<T | undefined, C> & {
-    label: ReactNode;
+    label?: ReactNode;
     options: SelectOptions<T>;
 
     /**

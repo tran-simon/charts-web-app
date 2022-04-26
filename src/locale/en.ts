@@ -17,6 +17,8 @@ export default {
   'dialog.confirm.cancel': 'Cancel',
   'dialog.confirm.confirm': 'Confirm',
 
+  'menu.delete': 'Delete',
+
   /* ChartPropsContextchart options */
 
   'ChartPropsContext.type.name': 'Type',
@@ -49,6 +51,13 @@ export default {
   'ChartPropsContext.series.type.option.bubble': 'Bubble',
   'ChartPropsContext.series.color': 'Color',
   'ChartPropsContext.series.data': 'Data',
+
+  /* Series data type */
+  'ChartPropsContext.series.dataType': 'Data Type',
+  'ChartPropsContext.series.dataType.option.singleValues': 'Single Values',
+  'ChartPropsContext.series.dataType.option.pairedValues': 'Paired Values',
+  'ChartPropsContext.series.dataType.option.complexPairedValues':
+    'Complex Paired Values',
 
   /* ApexChart options*/
 

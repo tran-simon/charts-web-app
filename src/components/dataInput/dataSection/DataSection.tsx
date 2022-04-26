@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { DataGridProps } from '@mui/x-data-grid';
+import React, { useContext, useMemo } from 'react';
 import { Box, Grid } from '@mui/material';
 import { ChartPropsContext } from '../../../providers/ChartProviders';
 import { OptionDetails } from '../OptionSection';
@@ -9,10 +8,10 @@ import SeriesTabs, {
   SeriesTabsContext,
   SeriesTabsProvider,
 } from './SeriesTabs';
+import { Path } from '../../../utils/utils';
+import GenericField from '../../fields/Field';
 
-export type DataSectionProps = Partial<DataGridProps> & {};
-
-const DataSection = (props: DataSectionProps) => {
+const DataSection = () => {
   return (
     <Box
       sx={{
@@ -22,11 +21,10 @@ const DataSection = (props: DataSectionProps) => {
         height: '100%',
       }}
     >
-      <Box padding={2}>
+      <Box sx={{ overflowY: 'auto' }} padding={2}>
         <SeriesSection />
       </Box>
       <Box
-        marginTop={2}
         sx={{
           borderTop: 1,
           borderColor: 'divider',
@@ -40,15 +38,53 @@ const DataSection = (props: DataSectionProps) => {
 
 const SeriesSection = () => {
   const { tab } = useContext(SeriesTabsContext);
-
+  const path = useMemo(() => ['series', tab], [tab]);
   return (
-    <OptionDetails
-      options={apexAxisChartSeriesOptions}
-      Wrapper={(props) => <Grid container spacing={2} {...props} />}
-      ItemWrapper={(props) => <Grid item xs={6} sm={4} {...props} />}
+    <>
+      <OptionDetails
+        options={apexAxisChartSeriesOptions}
+        Wrapper={(props) => (
+          <Grid
+            container
+            spacing={2}
+            {...props}
+            sx={{
+              marginBottom: 1,
+            }}
+          />
+        )}
+        ItemWrapper={(props) => {
+          //todo: improve responsive layout
+          return <Grid item sm={6} md={3} {...props} />;
+        }}
+        Context={ChartPropsContext}
+        omit={['data']} //todo: improve this
+        path={path}
+      />
+      <SeriesDataInput path={path} />
+    </>
+  );
+};
+
+const SeriesDataInput = ({ path }: { path: Path }) => {
+  return (
+    <GenericField
+      path={[...path, 'data']}
+      convert={(v) => {
+        if (v == null) {
+          return [];
+        }
+
+        // TODO(https://github.com/tran-simon/charts-web-app/issues/4): implement validation
+
+        return JSON.parse(v);
+      }}
+      convertToString={(v) => JSON.stringify(v)}
+      fullWidth
+      multiline
+      disableClearable
+      rows={6}
       Context={ChartPropsContext}
-      omit={['data']}
-      path={['series', tab]}
     />
   );
 };
