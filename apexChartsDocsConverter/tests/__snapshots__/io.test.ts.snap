@@ -1,0 +1,652 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`io can generate code 1`] = `
+"import { ApexOptions } from 'apexcharts';
+import { Options } from '../optionModel';
+
+const testGenerateCode: Options<ApexOptions['testGenerateCode']> = {
+  text: new TextOptionField(),
+  align: new SelectOptionField({
+    left: { value: 'left', labelId: title.align.option.left },
+    center: { value: 'center', labelId: title.align.option.center },
+    right: { value: 'right', labelId: title.align.option.right },
+  }),
+  margin: new NumberOptionField(),
+  offsetX: new NumberOptionField(),
+  offsetY: new NumberOptionField(),
+  floating: new BoolOptionField(),
+  style: {
+    fontSize: new TextOptionField(),
+    fontWeight: new TextOptionField(),
+    fontFamily: new TextOptionField(),
+    color: new TextOptionField(),
+  },
+};
+
+export default testGenerateCode;
+"
+`;
+
+exports[`io can parseHtml 1`] = `
+Array [
+  Object {
+    "attributes": Array [
+      Object {
+        "key": "class",
+        "value": "chart-title",
+      },
+    ],
+    "children": Array [
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "content": "title",
+            "type": "text",
+          },
+        ],
+        "tagName": "h3",
+        "type": "element",
+      },
+      Object {
+        "content": " ",
+        "type": "text",
+      },
+      Object {
+        "attributes": Array [
+          Object {
+            "key": "id",
+            "value": "text",
+          },
+          Object {
+            "key": "class",
+            "value": "anchor",
+          },
+        ],
+        "children": Array [],
+        "tagName": "a",
+        "type": "element",
+      },
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": "text: String",
+                "type": "text",
+              },
+            ],
+            "tagName": "h3",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": " Text to display as a title of chart",
+                "type": "text",
+              },
+            ],
+            "tagName": "p",
+            "type": "element",
+          },
+        ],
+        "tagName": "div",
+        "type": "element",
+      },
+      Object {
+        "content": " ",
+        "type": "text",
+      },
+      Object {
+        "attributes": Array [
+          Object {
+            "key": "id",
+            "value": "align",
+          },
+          Object {
+            "key": "class",
+            "value": "anchor",
+          },
+        ],
+        "children": Array [],
+        "tagName": "a",
+        "type": "element",
+      },
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": "align: String",
+                "type": "text",
+              },
+            ],
+            "tagName": "h3",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": " Alignment of title relative to chart area. ",
+                "type": "text",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [],
+                "tagName": "br",
+                "type": "element",
+              },
+              Object {
+                "content": " Possible Options ",
+                "type": "text",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [],
+                "tagName": "br",
+                "type": "element",
+              },
+            ],
+            "tagName": "p",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": "left",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "li",
+                "type": "element",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": "center",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "li",
+                "type": "element",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": "right",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "li",
+                "type": "element",
+              },
+            ],
+            "tagName": "ul",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [],
+            "tagName": "p",
+            "type": "element",
+          },
+        ],
+        "tagName": "div",
+        "type": "element",
+      },
+      Object {
+        "content": " ",
+        "type": "text",
+      },
+      Object {
+        "attributes": Array [
+          Object {
+            "key": "id",
+            "value": "margin",
+          },
+          Object {
+            "key": "class",
+            "value": "anchor",
+          },
+        ],
+        "children": Array [],
+        "tagName": "a",
+        "type": "element",
+      },
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": "margin: Number",
+                "type": "text",
+              },
+            ],
+            "tagName": "h3",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": " Vertical spacing around the title text",
+                "type": "text",
+              },
+            ],
+            "tagName": "p",
+            "type": "element",
+          },
+        ],
+        "tagName": "div",
+        "type": "element",
+      },
+      Object {
+        "content": " ",
+        "type": "text",
+      },
+      Object {
+        "attributes": Array [
+          Object {
+            "key": "id",
+            "value": "offsetX",
+          },
+          Object {
+            "key": "class",
+            "value": "anchor",
+          },
+        ],
+        "children": Array [],
+        "tagName": "a",
+        "type": "element",
+      },
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": "offsetX: Number",
+                "type": "text",
+              },
+            ],
+            "tagName": "h3",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": " Sets the left offset for title text",
+                "type": "text",
+              },
+            ],
+            "tagName": "p",
+            "type": "element",
+          },
+        ],
+        "tagName": "div",
+        "type": "element",
+      },
+      Object {
+        "content": " ",
+        "type": "text",
+      },
+      Object {
+        "attributes": Array [
+          Object {
+            "key": "id",
+            "value": "offsetY",
+          },
+          Object {
+            "key": "class",
+            "value": "anchor",
+          },
+        ],
+        "children": Array [],
+        "tagName": "a",
+        "type": "element",
+      },
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": "offsetY: Number",
+                "type": "text",
+              },
+            ],
+            "tagName": "h3",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": " Sets the top offset for title text",
+                "type": "text",
+              },
+            ],
+            "tagName": "p",
+            "type": "element",
+          },
+        ],
+        "tagName": "div",
+        "type": "element",
+      },
+      Object {
+        "content": " ",
+        "type": "text",
+      },
+      Object {
+        "attributes": Array [
+          Object {
+            "key": "id",
+            "value": "floating",
+          },
+          Object {
+            "key": "class",
+            "value": "anchor",
+          },
+        ],
+        "children": Array [],
+        "tagName": "a",
+        "type": "element",
+      },
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": "floating: Boolean",
+                "type": "text",
+              },
+            ],
+            "tagName": "h3",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": " The floating option will take out the title text from the chart area and make it float on top of the chart.",
+                "type": "text",
+              },
+            ],
+            "tagName": "p",
+            "type": "element",
+          },
+        ],
+        "tagName": "div",
+        "type": "element",
+      },
+      Object {
+        "content": " ",
+        "type": "text",
+      },
+      Object {
+        "attributes": Array [
+          Object {
+            "key": "id",
+            "value": "style",
+          },
+          Object {
+            "key": "class",
+            "value": "anchor",
+          },
+        ],
+        "children": Array [],
+        "tagName": "a",
+        "type": "element",
+      },
+      Object {
+        "attributes": Array [],
+        "children": Array [
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "content": "style",
+                "type": "text",
+              },
+            ],
+            "tagName": "h3",
+            "type": "element",
+          },
+          Object {
+            "content": " ",
+            "type": "text",
+          },
+          Object {
+            "attributes": Array [
+              Object {
+                "key": "id",
+                "value": "fontSize",
+              },
+              Object {
+                "key": "class",
+                "value": "anchor",
+              },
+            ],
+            "children": Array [],
+            "tagName": "a",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": "fontSize: String",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "h3",
+                "type": "element",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": " Font Size of the title text",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "p",
+                "type": "element",
+              },
+            ],
+            "tagName": "div",
+            "type": "element",
+          },
+          Object {
+            "content": " ",
+            "type": "text",
+          },
+          Object {
+            "attributes": Array [
+              Object {
+                "key": "id",
+                "value": "fontWeight",
+              },
+              Object {
+                "key": "class",
+                "value": "anchor",
+              },
+            ],
+            "children": Array [],
+            "tagName": "a",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": "fontWeight: String | Number",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "h3",
+                "type": "element",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": " Font Weight of the title text",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "p",
+                "type": "element",
+              },
+            ],
+            "tagName": "div",
+            "type": "element",
+          },
+          Object {
+            "content": " ",
+            "type": "text",
+          },
+          Object {
+            "attributes": Array [
+              Object {
+                "key": "id",
+                "value": "fontFamily",
+              },
+              Object {
+                "key": "class",
+                "value": "anchor",
+              },
+            ],
+            "children": Array [],
+            "tagName": "a",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": "fontFamily: String",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "h3",
+                "type": "element",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": " Font Family of the title text",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "p",
+                "type": "element",
+              },
+            ],
+            "tagName": "div",
+            "type": "element",
+          },
+          Object {
+            "content": " ",
+            "type": "text",
+          },
+          Object {
+            "attributes": Array [
+              Object {
+                "key": "id",
+                "value": "color",
+              },
+              Object {
+                "key": "class",
+                "value": "anchor",
+              },
+            ],
+            "children": Array [],
+            "tagName": "a",
+            "type": "element",
+          },
+          Object {
+            "attributes": Array [],
+            "children": Array [
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": "color: Color",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "h3",
+                "type": "element",
+              },
+              Object {
+                "attributes": Array [],
+                "children": Array [
+                  Object {
+                    "content": " Fore color of the title text",
+                    "type": "text",
+                  },
+                ],
+                "tagName": "p",
+                "type": "element",
+              },
+            ],
+            "tagName": "div",
+            "type": "element",
+          },
+        ],
+        "tagName": "div",
+        "type": "element",
+      },
+    ],
+    "tagName": "div",
+    "type": "element",
+  },
+]
+`;
+
+exports[`io can stringify 1`] = `
+"{
+  text: new TextOptionField(),
+  align: new SelectOptionField({ left: { value: 'left', labelId: title.align.option.left },center: { value: 'center', labelId: title.align.option.center },right: { value: 'right', labelId: title.align.option.right } }),
+  margin: new NumberOptionField(),
+  offsetX: new NumberOptionField(),
+  offsetY: new NumberOptionField(),
+  floating: new BoolOptionField(),
+  style: {
+    fontSize: new TextOptionField(),
+    fontWeight: new TextOptionField(),
+    fontFamily: new TextOptionField(),
+    color: new TextOptionField()
+  }
+}"
+`;

@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convert can convert title.html 1`] = `
+Object {
+  "align": Object {
+    "_isDocValue": true,
+    "description": "Alignment of title relative to chart area.",
+    "name": "align",
+    "options": Array [
+      "left",
+      "center",
+      "right",
+    ],
+    "path": Array [
+      "title",
+      "align",
+    ],
+    "type": "string",
+  },
+  "floating": Object {
+    "_isDocValue": true,
+    "description": "The floating option will take out the title text from the chart area and make it float on top of the chart.",
+    "name": "floating",
+    "options": undefined,
+    "path": Array [
+      "title",
+      "floating",
+    ],
+    "type": "boolean",
+  },
+  "margin": Object {
+    "_isDocValue": true,
+    "description": "Vertical spacing around the title text",
+    "name": "margin",
+    "options": undefined,
+    "path": Array [
+      "title",
+      "margin",
+    ],
+    "type": "number",
+  },
+  "offsetX": Object {
+    "_isDocValue": true,
+    "description": "Sets the left offset for title text",
+    "name": "offsetX",
+    "options": undefined,
+    "path": Array [
+      "title",
+      "offsetX",
+    ],
+    "type": "number",
+  },
+  "offsetY": Object {
+    "_isDocValue": true,
+    "description": "Sets the top offset for title text",
+    "name": "offsetY",
+    "options": undefined,
+    "path": Array [
+      "title",
+      "offsetY",
+    ],
+    "type": "number",
+  },
+  "style": Object {
+    "_isDocSection": true,
+    "children": Array [
+      Object {
+        "_isDocValue": true,
+        "description": "Font Size of the title text",
+        "name": "fontSize",
+        "options": undefined,
+        "path": Array [
+          "title",
+          "style",
+          "fontSize",
+        ],
+        "type": "string",
+      },
+      Object {
+        "_isDocValue": true,
+        "description": "Font Weight of the title text",
+        "name": "fontWeight",
+        "options": undefined,
+        "path": Array [
+          "title",
+          "style",
+          "fontWeight",
+        ],
+        "type": "string | number",
+      },
+      Object {
+        "_isDocValue": true,
+        "description": "Font Family of the title text",
+        "name": "fontFamily",
+        "options": undefined,
+        "path": Array [
+          "title",
+          "style",
+          "fontFamily",
+        ],
+        "type": "string",
+      },
+      Object {
+        "_isDocValue": true,
+        "description": "Fore color of the title text",
+        "name": "color",
+        "options": undefined,
+        "path": Array [
+          "title",
+          "style",
+          "color",
+        ],
+        "type": "color",
+      },
+    ],
+    "name": "style",
+    "path": Array [
+      "title",
+      "style",
+    ],
+  },
+  "text": Object {
+    "_isDocValue": true,
+    "description": "Text to display as a title of chart",
+    "name": "text",
+    "options": undefined,
+    "path": Array [
+      "title",
+      "text",
+    ],
+    "type": "string",
+  },
+}
+`;
