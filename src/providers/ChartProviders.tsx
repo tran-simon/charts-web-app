@@ -63,6 +63,8 @@ export const GenericChartProvider = <T extends object>({
     [setOptions],
   );
 
+  console.log('debug', options);
+
   return (
     <Context.Provider
       value={{

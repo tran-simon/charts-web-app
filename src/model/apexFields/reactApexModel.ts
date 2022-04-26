@@ -1,7 +1,8 @@
 import {
-  ArrayOptionField,
+  ListOptionField,
   NumberOptionField,
   Options,
+  SelectOptionField,
   TextOptionField,
 } from '../optionModel';
 import { ApexOptions } from 'apexcharts';
@@ -33,9 +34,42 @@ export interface IReactApex {
   options?: ApexOptions;
 }
 
-const apexAxisChartSeriesOptions: Options<ApexAxisChartSeries[number]> = {
-  name: new TextOptionField(),
-  type: new TextOptionField(),
-  color: new TextOptionField(),
-  data: new ArrayOptionField(new NumberOptionField()),
-};
+export const apexAxisChartSeriesOptions: Options<ApexAxisChartSeries[number]> =
+  {
+    name: new TextOptionField({
+      disableClearable: true,
+    }),
+    type: new SelectOptionField(
+      {
+        line: {
+          labelId: 'ChartPropsContext.series.type.option.line',
+          value: 'line',
+        },
+        area: {
+          labelId: 'ChartPropsContext.series.type.option.area',
+          value: 'area',
+        },
+        column: {
+          labelId: 'ChartPropsContext.series.type.option.column',
+          value: 'column',
+        },
+        bar: {
+          labelId: 'ChartPropsContext.series.type.option.bar',
+          value: 'bar',
+        },
+        scatter: {
+          labelId: 'ChartPropsContext.series.type.option.scatter',
+          value: 'scatter',
+        },
+        bubble: {
+          labelId: 'ChartPropsContext.series.type.option.bubble',
+          value: 'bubble',
+        },
+      },
+      {
+        disableClearable: true,
+      },
+    ),
+    color: new TextOptionField(),
+    data: new ListOptionField(new NumberOptionField()),
+  };

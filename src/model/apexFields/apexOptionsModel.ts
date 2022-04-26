@@ -1,5 +1,5 @@
 import {
-  ArrayOptionField,
+  ListOptionField,
   BoolOptionField,
   NumberOptionField,
   Options,
@@ -37,7 +37,7 @@ const apexOptionsModel: Options<ApexOptions> = {
     offsetY: undefined,
     dropShadow: {
       enabled: new BoolOptionField(),
-      color: new ArrayOptionField(new TextOptionField(), true),
+      color: new ListOptionField(new TextOptionField(), true),
     },
     events: undefined,
     brush: undefined,
@@ -56,7 +56,7 @@ const apexOptionsModel: Options<ApexOptions> = {
     selection: undefined,
     animations: undefined,
   },
-  colors: new ArrayOptionField(new TextOptionField()),
+  colors: new ListOptionField(new TextOptionField()),
   dataLabels: undefined,
   fill: undefined,
   forecastDataPoints: undefined,
@@ -116,7 +116,7 @@ const apexOptionsModel: Options<ApexOptions> = {
         value: 'numeric',
       },
     }),
-    categories: new ArrayOptionField(new TextOptionField()),
+    categories: new ListOptionField(new TextOptionField()),
     tickAmount: new NumberOptionField(), // TODO(https://github.com/tran-simon/charts-web-app/issues/2): support string tickAmount: 'dataPoints'
     tickPlacement: new SelectOptionField({
       between: {
@@ -133,7 +133,7 @@ const apexOptionsModel: Options<ApexOptions> = {
     range: new NumberOptionField(),
     floating: new BoolOptionField(),
     decimalsInFloat: new NumberOptionField(),
-    overwriteCategories: new ArrayOptionField(new TextOptionField()),
+    overwriteCategories: new ListOptionField(new TextOptionField()),
     position: new SelectOptionField({
       bottom: {
         labelId: 'ChartContext.xaxis.position.option.bottom',
@@ -154,7 +154,7 @@ const apexOptionsModel: Options<ApexOptions> = {
       minHeight: new NumberOptionField(),
       maxHeight: new NumberOptionField(),
       style: {
-        colors: new ArrayOptionField(new TextOptionField(), true),
+        colors: new ListOptionField(new TextOptionField(), true),
         fontSize: new TextOptionField(),
         fontFamily: new TextOptionField(),
         fontWeight: new TextOptionField(),
@@ -243,7 +243,7 @@ const apexOptionsModel: Options<ApexOptions> = {
         gradient: {
           colorFrom: new TextOptionField(),
           colorTo: new TextOptionField(),
-          stops: new ArrayOptionField(new NumberOptionField()),
+          stops: new ListOptionField(new NumberOptionField()),
           opacityFrom: new NumberOptionField(),
           opacityTo: new NumberOptionField(),
         },

@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useMemo } from 'react';
+import React, { ComponentType, ReactNode, useContext, useMemo } from 'react';
 import {
   Accordion,
   AccordionDetails,
@@ -13,7 +13,7 @@ import {
   Box,
 } from '@mui/material';
 import {
-  ArrayOptionField,
+  ListOptionField,
   BoolOptionField,
   NumberOptionField,
   Option,
@@ -32,6 +32,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { ApexOptions } from 'apexcharts';
 import { getLabelIdFromPath, Path } from '../../utils/utils';
+import { FieldProps } from '../fields/Field';
 
 export type OptionsSectionProps<T, C extends object> = WithContext<C> & {
   model?: Options<T>;
@@ -83,13 +84,13 @@ const OptionSection = <T, C extends object>({
   );
 };
 
-const ArrayOptionSection = <T, C extends object>({
-  arrayOption,
+const ListOptionSection = <T, C extends object, P>({
+  listOption,
   path,
   Context,
   ...props
 }: OptionsSectionProps<T, C> & {
-  arrayOption: ArrayOptionField;
+  listOption: ListOptionField<P>;
 }) => {
   const { setOption, getOption } = useContext(Context);
 
@@ -103,7 +104,7 @@ const ArrayOptionSection = <T, C extends object>({
 
   const isArray = Array.isArray(data);
 
-  const options = arrayOption.options;
+  const options = listOption.field;
 
   return (
     <OptionSection Context={Context} path={path} {...props}>
@@ -135,27 +136,42 @@ export const OptionDetails = <T, C extends object>({
   options,
   path = [],
   Context,
+  omit = [],
+  Wrapper = ({ children }) => <List disablePadding>{children}</List>,
+  ItemWrapper = ({ children }) => (
+    <ListItem disableGutters>{children}</ListItem>
+  ),
 }: WithContext<C> & {
   options: Options<T>;
   path?: Path;
+  /**
+   * Option entries to omit
+   */
+  omit?: keyof T | (keyof T)[];
+  Wrapper?: ComponentType<{ children: ReactNode }>;
+  ItemWrapper?: ComponentType<{ children: ReactNode }>;
 }) => {
+  const omitSet = new Set(Array.isArray(omit) ? omit : [omit]);
+
   return (
-    <List disablePadding>
-      {Object.entries(options).map(([key, option], i) => {
-        if (option == null) {
-          return null;
-        }
-        return (
-          <ListItem disableGutters key={i}>
-            <OptionDetailsField
-              option={option as Option}
-              path={[...path, key]}
-              Context={Context}
-            />
-          </ListItem>
-        );
-      })}
-    </List>
+    <Wrapper>
+      {Object.entries(options)
+        .filter(([key]) => !omitSet.has(key as keyof T))
+        .map(([key, option], i) => {
+          if (option == null) {
+            return null;
+          }
+          return (
+            <ItemWrapper key={i}>
+              <OptionDetailsField
+                option={option as Option}
+                path={[...path, key]}
+                Context={Context}
+              />
+            </ItemWrapper>
+          );
+        })}
+    </Wrapper>
   );
 };
 
@@ -164,7 +180,7 @@ const ListOptionDetails = <T, C extends object>({
   path,
   Context,
 }: WithContext<C> & {
-  options: OptionField;
+  options: OptionField<FieldProps<T, C>>;
   path: Path;
 }) => {
   const { setOption, getOption } = useContext(Context);
@@ -250,13 +266,13 @@ export const OptionDetailsField = <C extends object = ApexOptions>({
       />
     );
   }
-  if (option instanceof ArrayOptionField) {
+  if (option instanceof ListOptionField) {
     if (option.canBeSingular) {
       return (
-        <ArrayOptionSection
+        <ListOptionSection
           Context={Context}
           path={path}
-          arrayOption={option}
+          listOption={option}
           title={title}
         />
       );
@@ -265,7 +281,7 @@ export const OptionDetailsField = <C extends object = ApexOptions>({
         <OptionSection Context={Context} path={path} title={title}>
           <ListOptionDetails
             Context={Context}
-            options={option.options}
+            options={option.field}
             path={path}
           />
         </OptionSection>
@@ -280,6 +296,7 @@ export const OptionDetailsField = <C extends object = ApexOptions>({
     label: title ?? (
       <FormattedMessage id={getLabelIdFromPath(path, Context.displayName)} />
     ),
+    ...option.fieldProps,
   };
 
   if (option instanceof TextOptionField) {

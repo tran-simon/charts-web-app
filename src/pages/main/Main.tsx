@@ -14,6 +14,7 @@ import { useIntlFormatter } from '../../utils/utils';
 import './app.css';
 import 'react-mosaic-component/react-mosaic-component.css';
 import cloneDeep from 'lodash/cloneDeep';
+import DataSection from '../../components/dataInput/dataSection/DataSection';
 
 declare module 'react-mosaic-component' {
   /*
@@ -46,14 +47,14 @@ const Main = () => {
       </WindowContent>
     ),
     'chart-window': (
-      <WindowContent padding={2}>
+      <WindowContent>
         <ChartSection />
       </WindowContent>
     ),
     'data-window': (
-      <WindowContent padding={2}>
+      <WindowContent>
         {/*TODO*/}
-        wip
+        <DataSection />
       </WindowContent>
     ),
   };

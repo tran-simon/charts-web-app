@@ -10,6 +10,13 @@ export default {
   'window.chart-window': 'Chart Preview',
   'window.data-window': 'Chart Data',
 
+  /* Dialogs */
+
+  'dialog.confirm.title': 'Are you sure?',
+  'dialog.confirm.content': 'This will delete data',
+  'dialog.confirm.cancel': 'Cancel',
+  'dialog.confirm.confirm': 'Confirm',
+
   /* ChartPropsContextchart options */
 
   'ChartPropsContext.type.name': 'Type',
@@ -34,6 +41,12 @@ export default {
   'ChartPropsContext.series': 'Data Series',
   'ChartPropsContext.series.name': 'Name',
   'ChartPropsContext.series.type': 'Type',
+  'ChartPropsContext.series.type.option.line': 'Line',
+  'ChartPropsContext.series.type.option.area': 'Are',
+  'ChartPropsContext.series.type.option.column': 'Column',
+  'ChartPropsContext.series.type.option.bar': 'Bar',
+  'ChartPropsContext.series.type.option.scatter': 'Scatter',
+  'ChartPropsContext.series.type.option.bubble': 'Bubble',
   'ChartPropsContext.series.color': 'Color',
   'ChartPropsContext.series.data': 'Data',
 

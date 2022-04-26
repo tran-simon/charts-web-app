@@ -3,7 +3,7 @@ import {
   IconButton,
   InputAdornment,
   TextField as MTextField,
-  TextFieldProps as MTextFieldProps,
+  StandardTextFieldProps as MTextFieldProps,
 } from '@mui/material';
 import { WithContext } from '../../providers/ChartProviders';
 import React, {
@@ -58,6 +58,8 @@ export type GenericFieldProps<
      * @default 500
      */
     debounceTimeout?: number;
+
+    disableClearable?: boolean;
   };
 
 const defaultConvert = (v: string | undefined) => v as any;
@@ -70,6 +72,7 @@ const GenericField = <T extends Primitive, C extends object>({
   convertToString = stringOrEmpty,
   debounceTimeout = 500,
   Context,
+  disableClearable,
   ...props
 }: GenericFieldProps<T, C>) => {
   const { setOption, getOption } = useContext(Context);
@@ -109,7 +112,7 @@ const GenericField = <T extends Primitive, C extends object>({
       InputProps={{
         ...props.InputProps,
         endAdornment:
-          hovering && state ? (
+          !disableClearable && hovering && state ? (
             <InputAdornment position={'end'}>
               <IconButton
                 size="small"

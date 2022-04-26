@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useCallback } from 'react';
 import { IntlShape, useIntl } from 'react-intl';
 
 export type SetState<T> = Dispatch<SetStateAction<T>>;
+export type UseState<S> = [S, Dispatch<SetStateAction<S>>];
 export type Primitive = string | boolean | number | null | undefined;
 export type Path = ReadonlyArray<string | number | symbol>;
 export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
