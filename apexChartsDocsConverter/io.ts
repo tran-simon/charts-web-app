@@ -2,13 +2,15 @@ import { promises as fs } from 'fs';
 // @ts-ignore
 import { parse } from 'himalaya';
 import { JSDOM } from 'jsdom';
-import { isDocSection, isDocValue } from './convert';
+import { isDocSection, isDocValue, numberOrStringTypes } from './convert';
 import prettier from 'prettier'
+import {stringifyHardcode} from './hardcode';
 
 export const generateCode = async (data: string, name: string) => {
   const res = `
 import { ApexOptions } from 'apexcharts';
-import { Options } from '../optionModel';
+import { Options } from '../src/model/optionModel';
+import * as optionModel from '../src/model/optionModel'
 
 const ${name}: Options<ApexOptions['${name}']> = ${data};
 
@@ -21,40 +23,63 @@ export default ${name};
     'singleQuote': true,
     'tabWidth': 2,
   };
-  return prettier.format(res, {
-    parser: 'babel',
-    ...options
-  })
+  try {
+    return prettier.format(res, {
+      parser: 'babel',
+      ...options,
+    });
+  }
+  catch (e) {
+    console.info("Generated code pre-prettifying:\n\n" + res)
+    return Promise.reject(
+      `Failed to prettify the output for ${name}: ` + e,
+    );
+  }
 };
 
 export const stringify = (data: object): string => {
   const replacer = (key: string, v: any) => {
     if (isDocValue(v)) {
+      const stringPath = v.path.join('.');
+      if (stringifyHardcode.hasOwnProperty(stringPath)) {
+        return stringifyHardcode[stringPath]
+      }
       if (v.options) {
-
         const selectOptions = v.options
           .map((option) =>
-            `${option}: { value: '${option}', labelId: ${[...v.path, 'option', option].join('.')} }`)
+            `${option}: { value: '${option}', labelId: '${[...v.path, 'option', option].join('.')}' }`);
 
-        return `new SelectOptionField({ ${selectOptions} })`;
+        if (v.type?.includes('[]')) {
+          return `new optionModel.ListOptionField(new optionModel.SelectOptionField({ ${selectOptions} }, ${v.type === 'string | string[]'}))`;
+        }
+        return `new optionModel.SelectOptionField({ ${selectOptions} })`;
       }
 
       if (v.type === 'string') {
-        return `new TextOptionField()`;
+        return `new optionModel.TextOptionField()`;
       }
       if (v.type === 'number') {
-        return `new NumberOptionField()`;
+        return `new optionModel.NumberOptionField()`;
       }
       if (v.type === 'boolean') {
-        return `new BoolOptionField()`;
+        return `new optionModel.BoolOptionField()`;
       }
-      if (v.type === 'string | number' || v.type === 'number | string') {
+
+      if (v.type === 'string | number'){
         // TODO(https://github.com/tran-simon/pretty-charts/issues/5)
-        return `new TextOptionField()`;
+        return `new optionModel.TextOptionField()`;
       }
-      if (v.type === 'color'){
-        // TODO(https://github.com/tran-simon/pretty-charts/issues/6)
-        return `new TextOptionField()`;
+
+      if (v.type?.includes('[]')) {
+        // todo
+        return `new optionModel.ListOptionField(new optionModel.TextOptionField())`;
+      }
+      if (v.type === 'function') {
+        //todo
+        return `null`
+      }
+      if (v.type === 'any') {
+        return `null`
       }
     } else if (isDocSection(v)) {
       return  v.children.reduce((acc, curr) => {

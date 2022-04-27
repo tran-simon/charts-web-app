@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 
 import arg from 'arg'
-import main from './main';
+import {cli} from './main';
 
 const args = arg(
   {
@@ -34,9 +34,9 @@ To write to a file:
   `);
 } else{
   if (args['--file']) {
-    main(args['--file'], undefined, args['_'][0], args['--write']);
+    cli(args['--file'], undefined, args['_'][0], args['--write']);
   }else {
     const [url, name] = args['_'];
-    main(undefined, url, name, args['--write']);
+    cli(undefined, url, name, args['--write']);
   }
 }

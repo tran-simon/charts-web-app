@@ -48,7 +48,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.json \"src/**/*.{ts,tsx}\"",
-    "postinstall": "husky install"
+		"codegen": "ts-node codegen.ts",
+    "clean-codegen": "rm generated-sources/*",
+    "postinstall": "husky install && [ -z \"$(ls -A generated-sources)\" ] && yarn codegen"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json}": [

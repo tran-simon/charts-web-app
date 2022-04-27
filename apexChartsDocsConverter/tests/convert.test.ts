@@ -3,16 +3,13 @@ import fs from 'fs';
 import convert from '../convert';
 import { parseHtml } from '../io';
 import { JSDOM } from 'jsdom';
+import { testAll } from './testUtils';
 
 describe("convert", ()=>{
-  let jsonData = {}
 
-  beforeAll(async () => {
-    const document = (await JSDOM.fromFile('tests/title.html')).window.document;
-    jsonData = parseHtml(document);
-  })
-
-  it('can convert title.html', ()=>{
-    expect(convert(jsonData, 'title')).toMatchSnapshot()
-  })
+  it('can convert', testAll(async (file: string, name: string) => {
+    const document = (await JSDOM.fromFile(file)).window.document;
+    const jsonData = parseHtml(document);
+    expect(convert(jsonData, name)).toMatchSnapshot(name);
+  }));
 })
