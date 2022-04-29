@@ -1,13 +1,13 @@
 import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
-const title: Options<ApexOptions['title']> = {
+const subtitle: Options<ApexOptions['subtitle']> = {
   text: new optionModel.TextOptionField(),
   align: new optionModel.SelectOptionField({
-    left: { value: 'left', labelId: 'title.align.option.left' },
-    center: { value: 'center', labelId: 'title.align.option.center' },
-    right: { value: 'right', labelId: 'title.align.option.right' },
+    left: { value: 'left', labelId: 'subtitle.align.option.left' },
+    center: { value: 'center', labelId: 'subtitle.align.option.center' },
+    right: { value: 'right', labelId: 'subtitle.align.option.right' },
   }),
   margin: new optionModel.NumberOptionField(),
   offsetX: new optionModel.NumberOptionField(),
@@ -21,4 +21,4 @@ const title: Options<ApexOptions['title']> = {
   },
 };
 
-export default title;
+export default subtitle;

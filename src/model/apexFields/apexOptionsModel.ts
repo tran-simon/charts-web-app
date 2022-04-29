@@ -7,6 +7,7 @@ import {
   TextOptionField,
 } from '../optionModel';
 import { ApexOptions } from 'apexcharts';
+import dataLabels from '../../generated-sources/dataLabels';
 
 const apexOptionsModel: Options<ApexOptions> = {
   annotations: {
@@ -57,7 +58,7 @@ const apexOptionsModel: Options<ApexOptions> = {
     animations: undefined,
   },
   colors: new ListOptionField(new TextOptionField()),
-  dataLabels: undefined,
+  dataLabels: dataLabels,
   fill: undefined,
   forecastDataPoints: undefined,
   grid: undefined,

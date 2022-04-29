@@ -9,8 +9,8 @@ import {stringifyHardcode} from './hardcode';
 export const generateCode = async (data: string, name: string) => {
   const res = `
 import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel'
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel'
 
 const ${name}: Options<ApexOptions['${name}']> = ${data};
 
@@ -37,12 +37,15 @@ export default ${name};
   }
 };
 
-export const stringify = (data: object): string => {
+export const stringify = (data: any): string => {
   const replacer = (key: string, v: any) => {
     if (isDocValue(v)) {
       const stringPath = v.path.join('.');
       if (stringifyHardcode.hasOwnProperty(stringPath)) {
         return stringifyHardcode[stringPath]
+      }
+      if (v.type === undefined) {
+        return undefined
       }
       if (v.options) {
         const selectOptions = v.options

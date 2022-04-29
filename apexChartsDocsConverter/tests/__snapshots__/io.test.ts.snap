@@ -494,12 +494,6 @@ const xaxis: Options<ApexOptions['xaxis']> = {
     offsetX: new optionModel.NumberOptionField(),
     offsetY: new optionModel.NumberOptionField(),
     format: new optionModel.TextOptionField(),
-    formatter: {
-      undefined: {
-        _isDocValue: true,
-        path: [xaxis, labels, formatter, null],
-      },
-    },
     datetimeUTC: new optionModel.BoolOptionField(),
     datetimeFormatter: {
       year: new optionModel.TextOptionField(),
@@ -511,10 +505,9 @@ const xaxis: Options<ApexOptions['xaxis']> = {
   axisBorder: {
     show: new optionModel.BoolOptionField(),
     color: null,
-    height: new optionModel.NumberOptionField(),
-    width: new optionModel.TextOptionField(),
     offsetX: new optionModel.NumberOptionField(),
     offsetY: new optionModel.NumberOptionField(),
+    strokeWidth: new optionModel.NumberOptionField(),
   },
   axisTicks: {
     show: new optionModel.BoolOptionField(),
@@ -653,17 +646,11 @@ const yaxis: Options<ApexOptions['yaxis']> = {
   },
   axisTicks: {
     show: new optionModel.BoolOptionField(),
-    borderType: null,
     color: null,
     width: new optionModel.BoolOptionField(),
     offsetX: new optionModel.NumberOptionField(),
     offsetY: new optionModel.NumberOptionField(),
   },
-  range: new optionModel.NumberOptionField(),
-  position: new optionModel.SelectOptionField({
-    bottom: { value: 'bottom', labelId: 'yaxis.position.option.bottom' },
-    top: { value: 'top', labelId: 'yaxis.position.option.top' },
-  }),
   title: {
     text: new optionModel.TextOptionField(),
     rotate: new optionModel.NumberOptionField(),
@@ -7800,7 +7787,7 @@ fill: {
                   Object {
                     "content": "
 fill: {
-  type: 'gradient' 
+  type: 'gradient'
 }
 /* OR */
 fill: {
@@ -8556,7 +8543,7 @@ fill: {
                     "children": Array [
                       Object {
                         "content": "
-[ 
+[
   [
     {
       offset: 0,
@@ -21525,17 +21512,6 @@ exports[`io can stringify: xaxis 1`] = `
     offsetX: new optionModel.NumberOptionField(),
     offsetY: new optionModel.NumberOptionField(),
     format: new optionModel.TextOptionField(),
-    formatter: {
-      undefined: {
-        _isDocValue: true,
-        path: [
-          xaxis,
-          labels,
-          formatter,
-          null
-        ]
-      }
-    },
     datetimeUTC: new optionModel.BoolOptionField(),
     datetimeFormatter: {
       year: new optionModel.TextOptionField(),
@@ -21547,10 +21523,9 @@ exports[`io can stringify: xaxis 1`] = `
   axisBorder: {
     show: new optionModel.BoolOptionField(),
     color: null,
-    height: new optionModel.NumberOptionField(),
-    width: new optionModel.TextOptionField(),
     offsetX: new optionModel.NumberOptionField(),
-    offsetY: new optionModel.NumberOptionField()
+    offsetY: new optionModel.NumberOptionField(),
+    strokeWidth: new optionModel.NumberOptionField()
   },
   axisTicks: {
     show: new optionModel.BoolOptionField(),
@@ -21654,14 +21629,11 @@ exports[`io can stringify: yaxis 1`] = `
   },
   axisTicks: {
     show: new optionModel.BoolOptionField(),
-    borderType: new optionModel.SelectOptionField({ solid: { value: 'solid', labelId: 'yaxis.axisTicks.borderType.option.solid' },dotted: { value: 'dotted', labelId: 'yaxis.axisTicks.borderType.option.dotted' } }),
     color: null,
     width: new optionModel.BoolOptionField(),
     offsetX: new optionModel.NumberOptionField(),
     offsetY: new optionModel.NumberOptionField()
   },
-  range: new optionModel.NumberOptionField(),
-  position: new optionModel.SelectOptionField({ bottom: { value: 'bottom', labelId: 'yaxis.position.option.bottom' },top: { value: 'top', labelId: 'yaxis.position.option.top' } }),
   title: {
     text: new optionModel.TextOptionField(),
     rotate: new optionModel.NumberOptionField(),

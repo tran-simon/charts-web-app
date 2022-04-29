@@ -7,13 +7,15 @@ export type DocValue = {
   options?: string[]
   path: string[]
   _isDocValue: true
+  _exclude?: boolean
 }
 
 export type DocSection = {
   name: string,
   children: DocOption[],
   path: string[]
-  _isDocSection: true
+  _isDocSection: true,
+  _exclude?: boolean
 }
 
 type DocOption = DocValue | DocSection
@@ -112,6 +114,16 @@ const mapOptions = (divs: any[], path: string[]):DocOption[]=>{
       _isDocValue: true,
       path: newPath
     });
+  }).filter((value)=>{
+    if (!value || value._exclude) {
+      return false
+    }
+    if (isDocSection(value)) {
+      return value.name != null && value.children?.length;
+    }
+    else{
+      return value.type != null && value.name != null;
+    }
   });
 }
 

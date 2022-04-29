@@ -1,6 +1,6 @@
 import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const tooltip: Options<ApexOptions['tooltip']> = {
   enabled: new optionModel.BoolOptionField(),

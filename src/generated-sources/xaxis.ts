@@ -1,6 +1,6 @@
 import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const xaxis: Options<ApexOptions['xaxis']> = {
   type: new optionModel.SelectOptionField({
@@ -46,12 +46,6 @@ const xaxis: Options<ApexOptions['xaxis']> = {
     offsetX: new optionModel.NumberOptionField(),
     offsetY: new optionModel.NumberOptionField(),
     format: new optionModel.TextOptionField(),
-    formatter: {
-      undefined: {
-        _isDocValue: true,
-        path: [xaxis, labels, formatter, null],
-      },
-    },
     datetimeUTC: new optionModel.BoolOptionField(),
     datetimeFormatter: {
       year: new optionModel.TextOptionField(),
@@ -63,10 +57,9 @@ const xaxis: Options<ApexOptions['xaxis']> = {
   axisBorder: {
     show: new optionModel.BoolOptionField(),
     color: null,
-    height: new optionModel.NumberOptionField(),
-    width: new optionModel.TextOptionField(),
     offsetX: new optionModel.NumberOptionField(),
     offsetY: new optionModel.NumberOptionField(),
+    strokeWidth: new optionModel.NumberOptionField(),
   },
   axisTicks: {
     show: new optionModel.BoolOptionField(),

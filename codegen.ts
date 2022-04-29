@@ -23,8 +23,15 @@ const URLS = [
 ];
 
 
-console.info("Regenerating sources...")
-apexChartsDocsConverter(URLS, `generated-sources`)
+console.info('Regenerating sources...');
+
+const names = process.argv.slice(2);
+apexChartsDocsConverter(
+  names.length ?
+    URLS.filter((v) => names.includes(v.name)) :
+    URLS,
+  `src/generated-sources`);
+
 
 
 /*

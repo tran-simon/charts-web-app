@@ -45,11 +45,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false ; (cd apexChartsDocsConverter && yarn test)",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.json \"src/**/*.{ts,tsx}\"",
-		"codegen": "ts-node codegen.ts",
-    "clean-codegen": "rm generated-sources/*",
+    "codegen": "ts-node codegen.ts",
+    "clean-codegen": "rm src/generated-sources/*.ts",
     "postinstall": "husky install && [ -z \"$(ls -A generated-sources)\" ] && yarn codegen"
   },
   "lint-staged": {

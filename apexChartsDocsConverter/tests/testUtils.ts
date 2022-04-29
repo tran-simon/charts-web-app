@@ -1,12 +1,14 @@
+import path from 'path';
+
 const filesList = [
-  ['tests/annotations.html', 'annotations'],
-  ['tests/fill.html', 'fill'],
-  ['tests/markers.html', 'markers'],
-  ['tests/noData.html', 'noData'],
-  ['tests/stroke.html', 'stroke'],
-  ['tests/title.html', 'title'],
-  ['tests/xaxis.html', 'xaxis'],
-  ['tests/yaxis.html', 'yaxis'],
+  [path.resolve(__dirname, 'testResources/annotations.html'), 'annotations'],
+  [path.resolve(__dirname, 'testResources/fill.html'), 'fill'],
+  [path.resolve(__dirname, 'testResources/markers.html'), 'markers'],
+  [path.resolve(__dirname, 'testResources/noData.html'), 'noData'],
+  [path.resolve(__dirname, 'testResources/stroke.html'), 'stroke'],
+  [path.resolve(__dirname, 'testResources/title.html'), 'title'],
+  [path.resolve(__dirname, 'testResources/xaxis.html'), 'xaxis'],
+  [path.resolve(__dirname, 'testResources/yaxis.html'), 'yaxis'],
 ]
 
 export const testAll = (fn: (file: string, name: string) => Promise<void>) => {

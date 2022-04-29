@@ -2554,30 +2554,6 @@ Object {
       },
       Object {
         "_isDocValue": true,
-        "description": "Sets the border height of the xaxis line",
-        "name": "height",
-        "options": undefined,
-        "path": Array [
-          "xaxis",
-          "axisBorder",
-          "height",
-        ],
-        "type": "number",
-      },
-      Object {
-        "_isDocValue": true,
-        "description": "Sets the width of the xaxis line",
-        "name": "width",
-        "options": undefined,
-        "path": Array [
-          "xaxis",
-          "axisBorder",
-          "width",
-        ],
-        "type": "string | number",
-      },
-      Object {
-        "_isDocValue": true,
         "description": "Sets the left offset of the axis border",
         "name": "offsetX",
         "options": undefined,
@@ -2597,6 +2573,17 @@ Object {
           "xaxis",
           "axisBorder",
           "offsetY",
+        ],
+        "type": "number",
+      },
+      Object {
+        "_isDocValue": true,
+        "description": "The stroke width",
+        "name": "strokeWidth",
+        "path": Array [
+          "xaxis",
+          "axisBorder",
+          "strokeWidth",
         ],
         "type": "number",
       },
@@ -2722,17 +2709,13 @@ Object {
         "_isDocValue": true,
         "description": "Possible Options",
         "name": "width",
-        "options": Array [
-          "Any number",
-          "tickWidth ",
-          "barWidth ",
-        ],
+        "options": undefined,
         "path": Array [
           "xaxis",
           "crosshairs",
           "width",
         ],
-        "type": "string | number",
+        "type": "number",
       },
       Object {
         "_isDocValue": true,
@@ -3250,30 +3233,6 @@ Object {
         "type": "string",
       },
       Object {
-        "_isDocSection": true,
-        "children": Array [
-          Object {
-            "_isDocValue": true,
-            "description": undefined,
-            "name": undefined,
-            "options": undefined,
-            "path": Array [
-              "xaxis",
-              "labels",
-              "formatter",
-              undefined,
-            ],
-            "type": undefined,
-          },
-        ],
-        "name": "formatter",
-        "path": Array [
-          "xaxis",
-          "labels",
-          "formatter",
-        ],
-      },
-      Object {
         "_isDocValue": true,
         "description": "When turned on, local DateTime is converted into UTC. Turn it off if you supply date with timezone info and want to preserve it.",
         "name": "datetimeUTC",
@@ -3739,21 +3698,6 @@ Object {
       },
       Object {
         "_isDocValue": true,
-        "description": "Available Options",
-        "name": "borderType",
-        "options": Array [
-          "solid",
-          "dotted",
-        ],
-        "path": Array [
-          "yaxis",
-          "axisTicks",
-          "borderType",
-        ],
-        "type": "string",
-      },
-      Object {
-        "_isDocValue": true,
         "description": "Color of the ticks",
         "name": "color",
         "options": undefined,
@@ -4169,32 +4113,6 @@ Object {
     ],
     "type": "boolean",
   },
-  "position": Object {
-    "_isDocValue": true,
-    "description": "Setting this option allows you to change the y-axis position",
-    "name": "position",
-    "options": Array [
-      "bottom",
-      "top",
-    ],
-    "path": Array [
-      "yaxis",
-      "position",
-    ],
-    "type": "string",
-  },
-  "range": Object {
-    "_isDocValue": true,
-    "description": "range takes the max value of y-axis, subtracts the provided range value and gets the min value based on that. So, technically
- it helps to keep the same range when min and max values gets updated dynamically",
-    "name": "range",
-    "options": undefined,
-    "path": Array [
-      "yaxis",
-      "range",
-    ],
-    "type": "number",
-  },
   "reversed": Object {
     "_isDocValue": true,
     "description": "Flip the chart upside down making it inversed and draw the y-axis from bigger to smaller numbers.",
@@ -4408,7 +4326,7 @@ Object {
           "tooltip",
           "enabled",
         ],
-        "type": undefined,
+        "type": "boolean",
       },
       Object {
         "_isDocValue": true,
@@ -4420,7 +4338,7 @@ Object {
           "tooltip",
           "offsetX",
         ],
-        "type": undefined,
+        "type": "number",
       },
     ],
     "name": "tooltip",
