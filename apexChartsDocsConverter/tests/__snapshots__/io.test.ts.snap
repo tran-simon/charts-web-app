@@ -2,15 +2,15 @@
 
 exports[`io can generate code: annotations 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const annotations: Options<ApexOptions['annotations']> = {
   position: new optionModel.SelectOptionField({
     front: { value: 'front', labelId: 'annotations.position.option.front' },
     back: { value: 'back', labelId: 'annotations.position.option.back' },
   }),
-  yaxis: {
+  yaxis: new optionModel.ListOptionField({
     y: new optionModel.NumberOptionField(),
     strokeDashArray: new optionModel.NumberOptionField(),
     borderColor: null,
@@ -68,8 +68,8 @@ const annotations: Options<ApexOptions['annotations']> = {
         },
       },
     },
-  },
-  xaxis: {
+  }),
+  xaxis: new optionModel.ListOptionField({
     x: new optionModel.NumberOptionField(),
     strokeDashArray: new optionModel.NumberOptionField(),
     borderColor: null,
@@ -128,8 +128,8 @@ const annotations: Options<ApexOptions['annotations']> = {
         cssClass: new optionModel.TextOptionField(),
       },
     },
-  },
-  points: {
+  }),
+  points: new optionModel.ListOptionField({
     x: new optionModel.TextOptionField(),
     y: new optionModel.NumberOptionField(),
     yAxisIndex: new optionModel.NumberOptionField(),
@@ -201,8 +201,8 @@ const annotations: Options<ApexOptions['annotations']> = {
       offsetX: new optionModel.NumberOptionField(),
       offsetY: new optionModel.NumberOptionField(),
     },
-  },
-  texts: {
+  }),
+  texts: new optionModel.ListOptionField({
     x: new optionModel.NumberOptionField(),
     y: new optionModel.NumberOptionField(),
     text: new optionModel.TextOptionField(),
@@ -229,15 +229,15 @@ const annotations: Options<ApexOptions['annotations']> = {
     paddingRight: new optionModel.NumberOptionField(),
     paddingTop: new optionModel.NumberOptionField(),
     paddingBottom: new optionModel.NumberOptionField(),
-  },
-  images: {
+  }),
+  images: new optionModel.ListOptionField({
     path: new optionModel.TextOptionField(),
     x: new optionModel.NumberOptionField(),
     y: new optionModel.NumberOptionField(),
     width: new optionModel.NumberOptionField(),
     height: new optionModel.NumberOptionField(),
     appendTo: new optionModel.TextOptionField(),
-  },
+  }),
 };
 
 export default annotations;
@@ -246,8 +246,8 @@ export default annotations;
 
 exports[`io can generate code: fill 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const fill: Options<ApexOptions['fill']> = {
   colors: null,
@@ -298,23 +298,23 @@ const fill: Options<ApexOptions['fill']> = {
     style: new optionModel.SelectOptionField({
       verticalLines: {
         value: 'verticalLines',
-        labelId: 'fill.Pattern.style.option.verticalLines',
+        labelId: 'fill.pattern.style.option.verticalLines',
       },
       horizontalLines: {
         value: 'horizontalLines',
-        labelId: 'fill.Pattern.style.option.horizontalLines',
+        labelId: 'fill.pattern.style.option.horizontalLines',
       },
       slantedLines: {
         value: 'slantedLines',
-        labelId: 'fill.Pattern.style.option.slantedLines',
+        labelId: 'fill.pattern.style.option.slantedLines',
       },
       squares: {
         value: 'squares',
-        labelId: 'fill.Pattern.style.option.squares',
+        labelId: 'fill.pattern.style.option.squares',
       },
       circles: {
         value: 'circles',
-        labelId: 'fill.Pattern.style.option.circles',
+        labelId: 'fill.pattern.style.option.circles',
       },
     }),
     width: new optionModel.NumberOptionField(),
@@ -329,8 +329,8 @@ export default fill;
 
 exports[`io can generate code: markers 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const markers: Options<ApexOptions['markers']> = {
   size: new optionModel.NumberOptionField(),
@@ -363,8 +363,8 @@ export default markers;
 
 exports[`io can generate code: noData 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const noData: Options<ApexOptions['noData']> = {
   text: new optionModel.TextOptionField(),
@@ -393,8 +393,8 @@ export default noData;
 
 exports[`io can generate code: stroke 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const stroke: Options<ApexOptions['stroke']> = {
   show: new optionModel.BoolOptionField(),
@@ -419,8 +419,8 @@ export default stroke;
 
 exports[`io can generate code: title 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const title: Options<ApexOptions['title']> = {
   text: new optionModel.TextOptionField(),
@@ -447,8 +447,8 @@ export default title;
 
 exports[`io can generate code: xaxis 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const xaxis: Options<ApexOptions['xaxis']> = {
   type: new optionModel.SelectOptionField({
@@ -599,8 +599,8 @@ export default xaxis;
 
 exports[`io can generate code: yaxis 1`] = `
 "import { ApexOptions } from 'apexcharts';
-import { Options } from '../src/model/optionModel';
-import * as optionModel from '../src/model/optionModel';
+import { Options } from '../model/optionModel';
+import * as optionModel from '../model/optionModel';
 
 const yaxis: Options<ApexOptions['yaxis']> = {
   show: new optionModel.BoolOptionField(),
@@ -686,6 +686,414 @@ const yaxis: Options<ApexOptions['yaxis']> = {
 };
 
 export default yaxis;
+"
+`;
+
+exports[`io can generate intl code: annotations 1`] = `
+"export default {
+  'annotations.position': 'Position',
+  'annotations.yaxis': 'Yaxis',
+  'annotations.yaxis.y': 'Y',
+  'annotations.yaxis.strokeDashArray': 'Stroke Dash Array',
+  'annotations.yaxis.borderColor': 'Border Color',
+  'annotations.yaxis.fillColor': 'Fill Color',
+  'annotations.yaxis.opacity': 'Opacity',
+  'annotations.yaxis.offsetX': 'Offset X',
+  'annotations.yaxis.offsetY': 'Offset Y',
+  'annotations.yaxis.width': 'Width',
+  'annotations.yaxis.yAxisIndex': 'Y Axis Index',
+  'annotations.yaxis.label': 'Label',
+  'annotations.yaxis.label.borderColor': 'Border Color',
+  'annotations.yaxis.label.borderWidth': 'Border Width',
+  'annotations.yaxis.label.borderRadius': 'Border Radius',
+  'annotations.yaxis.label.text': 'Text',
+  'annotations.yaxis.label.textAnchor': 'Text Anchor',
+  'annotations.yaxis.label.position': 'Position',
+  'annotations.yaxis.label.offsetX': 'Offset X',
+  'annotations.yaxis.label.offsetY': 'Offset Y',
+  'annotations.yaxis.label.mouseEnter': 'Mouse Enter',
+  'annotations.yaxis.label.mouseLeave': 'Mouse Leave',
+  'annotations.yaxis.label.style': 'Style',
+  'annotations.yaxis.label.style.background': 'Background',
+  'annotations.yaxis.label.style.color': 'Color',
+  'annotations.yaxis.label.style.fontSize': 'Font Size',
+  'annotations.yaxis.label.style.fontWeight': 'Font Weight',
+  'annotations.yaxis.label.style.fontFamily': 'Font Family',
+  'annotations.yaxis.label.style.cssClass': 'Css Class',
+  'annotations.yaxis.label.style.padding': 'Padding',
+  'annotations.yaxis.label.style.padding.left': 'Left',
+  'annotations.yaxis.label.style.padding.right': 'Right',
+  'annotations.yaxis.label.style.padding.top': 'Top',
+  'annotations.yaxis.label.style.padding.bottom': 'Bottom',
+  'annotations.xaxis': 'Xaxis',
+  'annotations.xaxis.x': 'X',
+  'annotations.xaxis.strokeDashArray': 'Stroke Dash Array',
+  'annotations.xaxis.borderColor': 'Border Color',
+  'annotations.xaxis.fillColor': 'Fill Color',
+  'annotations.xaxis.opacity': 'Opacity',
+  'annotations.xaxis.offsetX': 'Offset X',
+  'annotations.xaxis.offsetY': 'Offset Y',
+  'annotations.xaxis.label': 'Label',
+  'annotations.xaxis.label.borderColor': 'Border Color',
+  'annotations.xaxis.label.borderWidth': 'Border Width',
+  'annotations.xaxis.label.borderRadius': 'Border Radius',
+  'annotations.xaxis.label.text': 'Text',
+  'annotations.xaxis.label.textAnchor': 'Text Anchor',
+  'annotations.xaxis.label.position': 'Position',
+  'annotations.xaxis.label.orientation': 'Orientation',
+  'annotations.xaxis.label.offsetX': 'Offset X',
+  'annotations.xaxis.label.offsetY': 'Offset Y',
+  'annotations.xaxis.label.mouseEnter': 'Mouse Enter',
+  'annotations.xaxis.label.mouseLeave': 'Mouse Leave',
+  'annotations.xaxis.label.style': 'Style',
+  'annotations.xaxis.label.style.color': 'Color',
+  'annotations.xaxis.label.style.fontSize': 'Font Size',
+  'annotations.xaxis.label.style.fontWeight': 'Font Weight',
+  'annotations.xaxis.label.style.fontFamily': 'Font Family',
+  'annotations.xaxis.label.style.cssClass': 'Css Class',
+  'annotations.points': 'Points',
+  'annotations.points.x': 'X',
+  'annotations.points.y': 'Y',
+  'annotations.points.yAxisIndex': 'Y Axis Index',
+  'annotations.points.seriesIndex': 'Series Index',
+  'annotations.points.mouseEnter': 'Mouse Enter',
+  'annotations.points.mouseLeave': 'Mouse Leave',
+  'annotations.points.marker': 'Marker',
+  'annotations.points.marker.size': 'Size',
+  'annotations.points.marker.fillColor': 'Fill Color',
+  'annotations.points.marker.strokeColor': 'Stroke Color',
+  'annotations.points.marker.strokeWidth': 'Stroke Width',
+  'annotations.points.marker.shape': 'Shape',
+  'annotations.points.marker.radius': 'Radius',
+  'annotations.points.marker.offsetX': 'Offset X',
+  'annotations.points.marker.offsetY': 'Offset Y',
+  'annotations.points.marker.cssClass': 'Css Class',
+  'annotations.points.label': 'Label',
+  'annotations.points.label.borderColor': 'Border Color',
+  'annotations.points.label.borderWidth': 'Border Width',
+  'annotations.points.label.borderRadius': 'Border Radius',
+  'annotations.points.label.text': 'Text',
+  'annotations.points.label.textAnchor': 'Text Anchor',
+  'annotations.points.label.offsetX': 'Offset X',
+  'annotations.points.label.offsetY': 'Offset Y',
+  'annotations.points.label.mouseEnter': 'Mouse Enter',
+  'annotations.points.label.mouseLeave': 'Mouse Leave',
+  'annotations.points.label.style': 'Style',
+  'annotations.points.label.style.background': 'Background',
+  'annotations.points.label.style.color': 'Color',
+  'annotations.points.label.style.fontSize': 'Font Size',
+  'annotations.points.label.style.fontWeight': 'Font Weight',
+  'annotations.points.label.style.fontFamily': 'Font Family',
+  'annotations.points.label.style.cssClass': 'Css Class',
+  'annotations.points.label.style.padding': 'Padding',
+  'annotations.points.label.style.padding.left': 'Left',
+  'annotations.points.label.style.padding.right': 'Right',
+  'annotations.points.label.style.padding.top': 'Top',
+  'annotations.points.label.style.padding.bottom': 'Bottom',
+  'annotations.points.image': 'Image',
+  'annotations.points.image.path': 'Path',
+  'annotations.points.image.width': 'Width',
+  'annotations.points.image.height': 'Height',
+  'annotations.points.image.offsetX': 'Offset X',
+  'annotations.points.image.offsetY': 'Offset Y',
+  'annotations.texts': 'Texts',
+  'annotations.texts.x': 'X',
+  'annotations.texts.y': 'Y',
+  'annotations.texts.text': 'Text',
+  'annotations.texts.textAnchor': 'Text Anchor',
+  'annotations.texts.color': 'Color',
+  'annotations.texts.fontSize': 'Font Size',
+  'annotations.texts.fontWeight': 'Font Weight',
+  'annotations.texts.fontFamily': 'Font Family',
+  'annotations.texts.appendTo': 'Append To',
+  'annotations.texts.borderColor': 'Border Color',
+  'annotations.texts.borderRadius': 'Border Radius',
+  'annotations.texts.borderWidth': 'Border Width',
+  'annotations.texts.paddingLeft': 'Padding Left',
+  'annotations.texts.paddingRight': 'Padding Right',
+  'annotations.texts.paddingTop': 'Padding Top',
+  'annotations.texts.paddingBottom': 'Padding Bottom',
+  'annotations.images': 'Images',
+  'annotations.images.path': 'Path',
+  'annotations.images.x': 'X',
+  'annotations.images.y': 'Y',
+  'annotations.images.width': 'Width',
+  'annotations.images.height': 'Height',
+  'annotations.images.appendTo': 'Append To',
+  annotations: 'Annotations',
+};
+"
+`;
+
+exports[`io can generate intl code: fill 1`] = `
+"export default {
+  'fill.colors': 'Colors',
+  'fill.opacity': 'Opacity',
+  'fill.type': 'Type',
+  'fill.gradient': 'Gradient',
+  'fill.gradient.shade': 'Shade',
+  'fill.gradient.type': 'Type',
+  'fill.gradient.shadeIntensity': 'Shade Intensity',
+  'fill.gradient.gradientToColors': 'Gradient To Colors',
+  'fill.gradient.inverseColors': 'Inverse Colors',
+  'fill.gradient.opacityFrom': 'Opacity From',
+  'fill.gradient.opacityTo': 'Opacity To',
+  'fill.gradient.stops': 'Stops',
+  'fill.gradient.colorStops': 'Color Stops',
+  'fill.image': 'Image',
+  'fill.image.src': 'Src',
+  'fill.image.width': 'Width',
+  'fill.image.height': 'Height',
+  'fill.pattern': 'Pattern',
+  'fill.pattern.style': 'Style',
+  'fill.pattern.width': 'Width',
+  'fill.pattern.height': 'Height',
+  'fill.pattern.strokeWidth': 'Stroke Width',
+  fill: 'Fill',
+};
+"
+`;
+
+exports[`io can generate intl code: markers 1`] = `
+"export default {
+  'markers.size': 'Size',
+  'markers.colors': 'Colors',
+  'markers.strokeColors': 'Stroke Colors',
+  'markers.strokeWidth': 'Stroke Width',
+  'markers.strokeOpacity': 'Stroke Opacity',
+  'markers.strokeDashArray': 'Stroke Dash Array',
+  'markers.fillOpacity': 'Fill Opacity',
+  'markers.discrete': 'Discrete',
+  'markers.radius': 'Radius',
+  'markers.shape': 'Shape',
+  'markers.offsetX': 'Offset X',
+  'markers.offsetY': 'Offset Y',
+  'markers.onClick': 'On Click',
+  'markers.onDblClick': 'On Dbl Click',
+  'markers.showNullDataPoints': 'Show Null Data Points',
+  'markers.hover': 'Hover',
+  'markers.hover.size': 'Size',
+  'markers.hover.sizeOffset': 'Size Offset',
+  markers: 'Markers',
+};
+"
+`;
+
+exports[`io can generate intl code: noData 1`] = `
+"export default {
+  'noData.text': 'Text',
+  'noData.align': 'Align',
+  'noData.verticalAlign': 'Vertical Align',
+  'noData.offsetX': 'Offset X',
+  'noData.offsetY': 'Offset Y',
+  'noData.style': 'Style',
+  'noData.style.color': 'Color',
+  'noData.style.fontSize': 'Font Size',
+  'noData.style.fontFamily': 'Font Family',
+  noData: 'No Data',
+};
+"
+`;
+
+exports[`io can generate intl code: stroke 1`] = `
+"export default {
+  'stroke.show': 'Show',
+  'stroke.curve': 'Curve',
+  'stroke.lineCap': 'Line Cap',
+  'stroke.colors': 'Colors',
+  'stroke.width': 'Width',
+  'stroke.dashArray': 'Dash Array',
+  stroke: 'Stroke',
+};
+"
+`;
+
+exports[`io can generate intl code: title 1`] = `
+"export default {
+  'title.text': 'Text',
+  'title.align': 'Align',
+  'title.margin': 'Margin',
+  'title.offsetX': 'Offset X',
+  'title.offsetY': 'Offset Y',
+  'title.floating': 'Floating',
+  'title.style': 'Style',
+  'title.style.fontSize': 'Font Size',
+  'title.style.fontWeight': 'Font Weight',
+  'title.style.fontFamily': 'Font Family',
+  'title.style.color': 'Color',
+  title: 'Title',
+};
+"
+`;
+
+exports[`io can generate intl code: xaxis 1`] = `
+"export default {
+  'xaxis.type': 'Type',
+  'xaxis.categories': 'Categories',
+  'xaxis.tickAmount': 'Tick Amount',
+  'xaxis.tickPlacement': 'Tick Placement',
+  'xaxis.min': 'Min',
+  'xaxis.max': 'Max',
+  'xaxis.range': 'Range',
+  'xaxis.floating': 'Floating',
+  'xaxis.decimalsInFloat': 'Decimals In Float',
+  'xaxis.overwriteCategories': 'Overwrite Categories',
+  'xaxis.position': 'Position',
+  'xaxis.labels': 'Labels',
+  'xaxis.labels.show': 'Show',
+  'xaxis.labels.rotate': 'Rotate',
+  'xaxis.labels.rotateAlways': 'Rotate Always',
+  'xaxis.labels.hideOverlappingLabels': 'Hide Overlapping Labels',
+  'xaxis.labels.showDuplicates': 'Show Duplicates',
+  'xaxis.labels.trim': 'Trim',
+  'xaxis.labels.minHeight': 'Min Height',
+  'xaxis.labels.maxHeight': 'Max Height',
+  'xaxis.labels.style': 'Style',
+  'xaxis.labels.style.colors': 'Colors',
+  'xaxis.labels.style.fontSize': 'Font Size',
+  'xaxis.labels.style.fontFamily': 'Font Family',
+  'xaxis.labels.style.fontWeight': 'Font Weight',
+  'xaxis.labels.style.cssClass': 'Css Class',
+  'xaxis.labels.offsetX': 'Offset X',
+  'xaxis.labels.offsetY': 'Offset Y',
+  'xaxis.labels.format': 'Format',
+  'xaxis.labels.formatter': 'Formatter',
+  'xaxis.labels.formatter.': '',
+  'xaxis.labels.datetimeUTC': 'Datetime UTC',
+  'xaxis.labels.datetimeFormatter': 'Datetime Formatter',
+  'xaxis.labels.datetimeFormatter.year': 'Year',
+  'xaxis.labels.datetimeFormatter.month': 'Month',
+  'xaxis.labels.datetimeFormatter.day': 'Day',
+  'xaxis.labels.datetimeFormatter.hour': 'Hour',
+  'xaxis.axisBorder': 'Axis Border',
+  'xaxis.axisBorder.show': 'Show',
+  'xaxis.axisBorder.color': 'Color',
+  'xaxis.axisBorder.height': 'Height',
+  'xaxis.axisBorder.width': 'Width',
+  'xaxis.axisBorder.offsetX': 'Offset X',
+  'xaxis.axisBorder.offsetY': 'Offset Y',
+  'xaxis.axisBorder.strokeWidth': 'Stroke Width',
+  'xaxis.axisTicks': 'Axis Ticks',
+  'xaxis.axisTicks.show': 'Show',
+  'xaxis.axisTicks.borderType': 'Border Type',
+  'xaxis.axisTicks.color': 'Color',
+  'xaxis.axisTicks.height': 'Height',
+  'xaxis.axisTicks.offsetX': 'Offset X',
+  'xaxis.axisTicks.offsetY': 'Offset Y',
+  'xaxis.title': 'Title',
+  'xaxis.title.text': 'Text',
+  'xaxis.title.offsetX': 'Offset X',
+  'xaxis.title.offsetY': 'Offset Y',
+  'xaxis.title.style': 'Style',
+  'xaxis.title.style.color': 'Color',
+  'xaxis.title.style.fontSize': 'Font Size',
+  'xaxis.title.style.fontFamily': 'Font Family',
+  'xaxis.title.style.fontWeight': 'Font Weight',
+  'xaxis.title.style.cssClass': 'Css Class',
+  'xaxis.crosshairs': 'Crosshairs',
+  'xaxis.crosshairs.show': 'Show',
+  'xaxis.crosshairs.width': 'Width',
+  'xaxis.crosshairs.position': 'Position',
+  'xaxis.crosshairs.opacity': 'Opacity',
+  'xaxis.crosshairs.stroke': 'Stroke',
+  'xaxis.crosshairs.stroke.color': 'Color',
+  'xaxis.crosshairs.stroke.width': 'Width',
+  'xaxis.crosshairs.stroke.dashArray': 'Dash Array',
+  'xaxis.crosshairs.fill': 'Fill',
+  'xaxis.crosshairs.fill.type': 'Type',
+  'xaxis.crosshairs.fill.color': 'Color',
+  'xaxis.crosshairs.fill.gradient': 'Gradient',
+  'xaxis.crosshairs.fill.gradient.colorFrom': 'Color From',
+  'xaxis.crosshairs.fill.gradient.colorTo': 'Color To',
+  'xaxis.crosshairs.fill.gradient.stops': 'Stops',
+  'xaxis.crosshairs.fill.gradient.opacityFrom': 'Opacity From',
+  'xaxis.crosshairs.fill.gradient.opacityTo': 'Opacity To',
+  'xaxis.crosshairs.dropShadow': 'Drop Shadow',
+  'xaxis.crosshairs.dropShadow.enabled': 'Enabled',
+  'xaxis.crosshairs.dropShadow.top': 'Top',
+  'xaxis.crosshairs.dropShadow.left': 'Left',
+  'xaxis.crosshairs.dropShadow.blur': 'Blur',
+  'xaxis.crosshairs.dropShadow.opacity': 'Opacity',
+  'xaxis.tooltip': 'Tooltip',
+  'xaxis.tooltip.enabled': 'Enabled',
+  'xaxis.tooltip.formatter': 'Formatter',
+  'xaxis.tooltip.offsetY': 'Offset Y',
+  'xaxis.tooltip.style': 'Style',
+  'xaxis.tooltip.style.fontSize': 'Font Size',
+  'xaxis.tooltip.style.fontFamily': 'Font Family',
+  xaxis: 'Xaxis',
+};
+"
+`;
+
+exports[`io can generate intl code: yaxis 1`] = `
+"export default {
+  'yaxis.show': 'Show',
+  'yaxis.showAlways': 'Show Always',
+  'yaxis.showForNullSeries': 'Show For Null Series',
+  'yaxis.seriesName': 'Series Name',
+  'yaxis.opposite': 'Opposite',
+  'yaxis.reversed': 'Reversed',
+  'yaxis.logarithmic': 'Logarithmic',
+  'yaxis.logBase': 'Log Base',
+  'yaxis.tickAmount': 'Tick Amount',
+  'yaxis.min': 'Min',
+  'yaxis.max': 'Max',
+  'yaxis.forceNiceScale': 'Force Nice Scale',
+  'yaxis.floating': 'Floating',
+  'yaxis.decimalsInFloat': 'Decimals In Float',
+  'yaxis.labels': 'Labels',
+  'yaxis.labels.show': 'Show',
+  'yaxis.labels.align': 'Align',
+  'yaxis.labels.minWidth': 'Min Width',
+  'yaxis.labels.maxWidth': 'Max Width',
+  'yaxis.labels.style': 'Style',
+  'yaxis.labels.style.colors': 'Colors',
+  'yaxis.labels.style.fontSize': 'Font Size',
+  'yaxis.labels.style.fontFamily': 'Font Family',
+  'yaxis.labels.style.fontWeight': 'Font Weight',
+  'yaxis.labels.style.cssClass': 'Css Class',
+  'yaxis.labels.offsetX': 'Offset X',
+  'yaxis.labels.offsetY': 'Offset Y',
+  'yaxis.labels.rotate': 'Rotate',
+  'yaxis.labels.formatter': 'Formatter',
+  'yaxis.axisBorder': 'Axis Border',
+  'yaxis.axisBorder.show': 'Show',
+  'yaxis.axisBorder.color': 'Color',
+  'yaxis.axisBorder.offsetX': 'Offset X',
+  'yaxis.axisBorder.offsetY': 'Offset Y',
+  'yaxis.axisTicks': 'Axis Ticks',
+  'yaxis.axisTicks.show': 'Show',
+  'yaxis.axisTicks.borderType': 'Border Type',
+  'yaxis.axisTicks.color': 'Color',
+  'yaxis.axisTicks.width': 'Width',
+  'yaxis.axisTicks.offsetX': 'Offset X',
+  'yaxis.axisTicks.offsetY': 'Offset Y',
+  'yaxis.range': 'Range',
+  'yaxis.position': 'Position',
+  'yaxis.title': 'Title',
+  'yaxis.title.text': 'Text',
+  'yaxis.title.rotate': 'Rotate',
+  'yaxis.title.offsetX': 'Offset X',
+  'yaxis.title.offsetY': 'Offset Y',
+  'yaxis.title.style': 'Style',
+  'yaxis.title.style.color': 'Color',
+  'yaxis.title.style.fontSize': 'Font Size',
+  'yaxis.title.style.fontFamily': 'Font Family',
+  'yaxis.title.style.fontWeight': 'Font Weight',
+  'yaxis.title.style.cssClass': 'Css Class',
+  'yaxis.crosshairs': 'Crosshairs',
+  'yaxis.crosshairs.show': 'Show',
+  'yaxis.crosshairs.position': 'Position',
+  'yaxis.crosshairs.stroke': 'Stroke',
+  'yaxis.crosshairs.stroke.color': 'Color',
+  'yaxis.crosshairs.stroke.width': 'Width',
+  'yaxis.crosshairs.stroke.dashArray': 'Dash Array',
+  'yaxis.tooltip': 'Tooltip',
+  'yaxis.tooltip.enabled': 'Enabled',
+  'yaxis.tooltip.offsetX': 'Offset X',
+  yaxis: 'Yaxis',
+};
 "
 `;
 
@@ -21237,149 +21645,11 @@ Array [
 exports[`io can stringify: annotations 1`] = `
 "{
   position: new optionModel.SelectOptionField({ front: { value: 'front', labelId: 'annotations.position.option.front' },back: { value: 'back', labelId: 'annotations.position.option.back' } }),
-  yaxis: {
-    y: new optionModel.NumberOptionField(),
-    strokeDashArray: new optionModel.NumberOptionField(),
-    borderColor: null,
-    fillColor: null,
-    opacity: new optionModel.NumberOptionField(),
-    offsetX: new optionModel.NumberOptionField(),
-    offsetY: new optionModel.NumberOptionField(),
-    width: new optionModel.TextOptionField(),
-    yAxisIndex: new optionModel.NumberOptionField(),
-    label: {
-      borderColor: null,
-      borderWidth: new optionModel.NumberOptionField(),
-      borderRadius: new optionModel.NumberOptionField(),
-      text: new optionModel.TextOptionField(),
-      textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.yaxis.label.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.yaxis.label.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.yaxis.label.textAnchor.option.end' } }),
-      position: new optionModel.SelectOptionField({ left: { value: 'left', labelId: 'annotations.yaxis.label.position.option.left' },right: { value: 'right', labelId: 'annotations.yaxis.label.position.option.right' } }),
-      offsetX: new optionModel.NumberOptionField(),
-      offsetY: new optionModel.NumberOptionField(),
-      mouseEnter: null,
-      mouseLeave: null,
-      style: {
-        background: null,
-        color: null,
-        fontSize: new optionModel.TextOptionField(),
-        fontWeight: new optionModel.TextOptionField(),
-        fontFamily: new optionModel.TextOptionField(),
-        cssClass: new optionModel.TextOptionField(),
-        padding: {
-          left: new optionModel.NumberOptionField(),
-          right: new optionModel.NumberOptionField(),
-          top: new optionModel.NumberOptionField(),
-          bottom: new optionModel.NumberOptionField()
-        }
-      }
-    }
-  },
-  xaxis: {
-    x: new optionModel.NumberOptionField(),
-    strokeDashArray: new optionModel.NumberOptionField(),
-    borderColor: null,
-    fillColor: null,
-    opacity: new optionModel.NumberOptionField(),
-    offsetX: new optionModel.NumberOptionField(),
-    offsetY: new optionModel.NumberOptionField(),
-    label: {
-      borderColor: null,
-      borderWidth: new optionModel.NumberOptionField(),
-      borderRadius: new optionModel.NumberOptionField(),
-      text: new optionModel.TextOptionField(),
-      textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.xaxis.label.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.xaxis.label.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.xaxis.label.textAnchor.option.end' } }),
-      position: new optionModel.SelectOptionField({ top: { value: 'top', labelId: 'annotations.xaxis.label.position.option.top' },bottom: { value: 'bottom', labelId: 'annotations.xaxis.label.position.option.bottom' } }),
-      orientation: new optionModel.SelectOptionField({ vertical: { value: 'vertical', labelId: 'annotations.xaxis.label.orientation.option.vertical' },horizontal: { value: 'horizontal', labelId: 'annotations.xaxis.label.orientation.option.horizontal' } }),
-      offsetX: new optionModel.NumberOptionField(),
-      offsetY: new optionModel.NumberOptionField(),
-      mouseEnter: null,
-      mouseLeave: null,
-      style: {
-        color: null,
-        fontSize: new optionModel.TextOptionField(),
-        fontWeight: new optionModel.TextOptionField(),
-        fontFamily: new optionModel.TextOptionField(),
-        cssClass: new optionModel.TextOptionField()
-      }
-    }
-  },
-  points: {
-    x: new optionModel.TextOptionField(),
-    y: new optionModel.NumberOptionField(),
-    yAxisIndex: new optionModel.NumberOptionField(),
-    seriesIndex: new optionModel.NumberOptionField(),
-    mouseEnter: null,
-    mouseLeave: null,
-    marker: {
-      size: new optionModel.NumberOptionField(),
-      fillColor: new optionModel.TextOptionField(),
-      strokeColor: new optionModel.TextOptionField(),
-      strokeWidth: new optionModel.NumberOptionField(),
-      shape: new optionModel.SelectOptionField({ circle: { value: 'circle', labelId: 'annotations.points.marker.shape.option.circle' },square: { value: 'square', labelId: 'annotations.points.marker.shape.option.square' } }),
-      radius: new optionModel.NumberOptionField(),
-      offsetX: new optionModel.NumberOptionField(),
-      offsetY: new optionModel.NumberOptionField(),
-      cssClass: new optionModel.TextOptionField()
-    },
-    label: {
-      borderColor: null,
-      borderWidth: new optionModel.NumberOptionField(),
-      borderRadius: new optionModel.NumberOptionField(),
-      text: new optionModel.TextOptionField(),
-      textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.points.label.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.points.label.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.points.label.textAnchor.option.end' } }),
-      offsetX: new optionModel.NumberOptionField(),
-      offsetY: new optionModel.NumberOptionField(),
-      mouseEnter: null,
-      mouseLeave: null,
-      style: {
-        background: null,
-        color: null,
-        fontSize: new optionModel.TextOptionField(),
-        fontWeight: new optionModel.TextOptionField(),
-        fontFamily: new optionModel.TextOptionField(),
-        cssClass: new optionModel.TextOptionField(),
-        padding: {
-          left: new optionModel.NumberOptionField(),
-          right: new optionModel.NumberOptionField(),
-          top: new optionModel.NumberOptionField(),
-          bottom: new optionModel.NumberOptionField()
-        }
-      }
-    },
-    image: {
-      path: new optionModel.TextOptionField(),
-      width: new optionModel.NumberOptionField(),
-      height: new optionModel.NumberOptionField(),
-      offsetX: new optionModel.NumberOptionField(),
-      offsetY: new optionModel.NumberOptionField()
-    }
-  },
-  texts: {
-    x: new optionModel.NumberOptionField(),
-    y: new optionModel.NumberOptionField(),
-    text: new optionModel.TextOptionField(),
-    textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.texts.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.texts.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.texts.textAnchor.option.end' } }),
-    color: null,
-    fontSize: new optionModel.TextOptionField(),
-    fontWeight: new optionModel.TextOptionField(),
-    fontFamily: new optionModel.TextOptionField(),
-    appendTo: new optionModel.TextOptionField(),
-    borderColor: null,
-    borderRadius: new optionModel.NumberOptionField(),
-    borderWidth: new optionModel.NumberOptionField(),
-    paddingLeft: new optionModel.NumberOptionField(),
-    paddingRight: new optionModel.NumberOptionField(),
-    paddingTop: new optionModel.NumberOptionField(),
-    paddingBottom: new optionModel.NumberOptionField()
-  },
-  images: {
-    path: new optionModel.TextOptionField(),
-    x: new optionModel.NumberOptionField(),
-    y: new optionModel.NumberOptionField(),
-    width: new optionModel.NumberOptionField(),
-    height: new optionModel.NumberOptionField(),
-    appendTo: new optionModel.TextOptionField()
-  }
+  yaxis: new optionModel.ListOptionField({  y: new optionModel.NumberOptionField(),  strokeDashArray: new optionModel.NumberOptionField(),  borderColor: null,  fillColor: null,  opacity: new optionModel.NumberOptionField(),  offsetX: new optionModel.NumberOptionField(),  offsetY: new optionModel.NumberOptionField(),  width: new optionModel.TextOptionField(),  yAxisIndex: new optionModel.NumberOptionField(),  label: {    borderColor: null,    borderWidth: new optionModel.NumberOptionField(),    borderRadius: new optionModel.NumberOptionField(),    text: new optionModel.TextOptionField(),    textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.yaxis.label.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.yaxis.label.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.yaxis.label.textAnchor.option.end' } }),    position: new optionModel.SelectOptionField({ left: { value: 'left', labelId: 'annotations.yaxis.label.position.option.left' },right: { value: 'right', labelId: 'annotations.yaxis.label.position.option.right' } }),    offsetX: new optionModel.NumberOptionField(),    offsetY: new optionModel.NumberOptionField(),    mouseEnter: null,    mouseLeave: null,    style: {      background: null,      color: null,      fontSize: new optionModel.TextOptionField(),      fontWeight: new optionModel.TextOptionField(),      fontFamily: new optionModel.TextOptionField(),      cssClass: new optionModel.TextOptionField(),      padding: {        left: new optionModel.NumberOptionField(),        right: new optionModel.NumberOptionField(),        top: new optionModel.NumberOptionField(),        bottom: new optionModel.NumberOptionField()      }    }  }}),
+  xaxis: new optionModel.ListOptionField({  x: new optionModel.NumberOptionField(),  strokeDashArray: new optionModel.NumberOptionField(),  borderColor: null,  fillColor: null,  opacity: new optionModel.NumberOptionField(),  offsetX: new optionModel.NumberOptionField(),  offsetY: new optionModel.NumberOptionField(),  label: {    borderColor: null,    borderWidth: new optionModel.NumberOptionField(),    borderRadius: new optionModel.NumberOptionField(),    text: new optionModel.TextOptionField(),    textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.xaxis.label.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.xaxis.label.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.xaxis.label.textAnchor.option.end' } }),    position: new optionModel.SelectOptionField({ top: { value: 'top', labelId: 'annotations.xaxis.label.position.option.top' },bottom: { value: 'bottom', labelId: 'annotations.xaxis.label.position.option.bottom' } }),    orientation: new optionModel.SelectOptionField({ vertical: { value: 'vertical', labelId: 'annotations.xaxis.label.orientation.option.vertical' },horizontal: { value: 'horizontal', labelId: 'annotations.xaxis.label.orientation.option.horizontal' } }),    offsetX: new optionModel.NumberOptionField(),    offsetY: new optionModel.NumberOptionField(),    mouseEnter: null,    mouseLeave: null,    style: {      color: null,      fontSize: new optionModel.TextOptionField(),      fontWeight: new optionModel.TextOptionField(),      fontFamily: new optionModel.TextOptionField(),      cssClass: new optionModel.TextOptionField()    }  }}),
+  points: new optionModel.ListOptionField({  x: new optionModel.TextOptionField(),  y: new optionModel.NumberOptionField(),  yAxisIndex: new optionModel.NumberOptionField(),  seriesIndex: new optionModel.NumberOptionField(),  mouseEnter: null,  mouseLeave: null,  marker: {    size: new optionModel.NumberOptionField(),    fillColor: new optionModel.TextOptionField(),    strokeColor: new optionModel.TextOptionField(),    strokeWidth: new optionModel.NumberOptionField(),    shape: new optionModel.SelectOptionField({ circle: { value: 'circle', labelId: 'annotations.points.marker.shape.option.circle' },square: { value: 'square', labelId: 'annotations.points.marker.shape.option.square' } }),    radius: new optionModel.NumberOptionField(),    offsetX: new optionModel.NumberOptionField(),    offsetY: new optionModel.NumberOptionField(),    cssClass: new optionModel.TextOptionField()  },  label: {    borderColor: null,    borderWidth: new optionModel.NumberOptionField(),    borderRadius: new optionModel.NumberOptionField(),    text: new optionModel.TextOptionField(),    textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.points.label.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.points.label.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.points.label.textAnchor.option.end' } }),    offsetX: new optionModel.NumberOptionField(),    offsetY: new optionModel.NumberOptionField(),    mouseEnter: null,    mouseLeave: null,    style: {      background: null,      color: null,      fontSize: new optionModel.TextOptionField(),      fontWeight: new optionModel.TextOptionField(),      fontFamily: new optionModel.TextOptionField(),      cssClass: new optionModel.TextOptionField(),      padding: {        left: new optionModel.NumberOptionField(),        right: new optionModel.NumberOptionField(),        top: new optionModel.NumberOptionField(),        bottom: new optionModel.NumberOptionField()      }    }  },  image: {    path: new optionModel.TextOptionField(),    width: new optionModel.NumberOptionField(),    height: new optionModel.NumberOptionField(),    offsetX: new optionModel.NumberOptionField(),    offsetY: new optionModel.NumberOptionField()  }}),
+  texts: new optionModel.ListOptionField({  x: new optionModel.NumberOptionField(),  y: new optionModel.NumberOptionField(),  text: new optionModel.TextOptionField(),  textAnchor: new optionModel.SelectOptionField({ start: { value: 'start', labelId: 'annotations.texts.textAnchor.option.start' },middle: { value: 'middle', labelId: 'annotations.texts.textAnchor.option.middle' },end: { value: 'end', labelId: 'annotations.texts.textAnchor.option.end' } }),  color: null,  fontSize: new optionModel.TextOptionField(),  fontWeight: new optionModel.TextOptionField(),  fontFamily: new optionModel.TextOptionField(),  appendTo: new optionModel.TextOptionField(),  borderColor: null,  borderRadius: new optionModel.NumberOptionField(),  borderWidth: new optionModel.NumberOptionField(),  paddingLeft: new optionModel.NumberOptionField(),  paddingRight: new optionModel.NumberOptionField(),  paddingTop: new optionModel.NumberOptionField(),  paddingBottom: new optionModel.NumberOptionField()}),
+  images: new optionModel.ListOptionField({  path: new optionModel.TextOptionField(),  x: new optionModel.NumberOptionField(),  y: new optionModel.NumberOptionField(),  width: new optionModel.NumberOptionField(),  height: new optionModel.NumberOptionField(),  appendTo: new optionModel.TextOptionField()})
 }"
 `;
 
@@ -21405,7 +21675,7 @@ exports[`io can stringify: fill 1`] = `
     height: new optionModel.NumberOptionField()
   },
   pattern: {
-    style: new optionModel.SelectOptionField({ verticalLines: { value: 'verticalLines', labelId: 'fill.Pattern.style.option.verticalLines' },horizontalLines: { value: 'horizontalLines', labelId: 'fill.Pattern.style.option.horizontalLines' },slantedLines: { value: 'slantedLines', labelId: 'fill.Pattern.style.option.slantedLines' },squares: { value: 'squares', labelId: 'fill.Pattern.style.option.squares' },circles: { value: 'circles', labelId: 'fill.Pattern.style.option.circles' } }),
+    style: new optionModel.SelectOptionField({ verticalLines: { value: 'verticalLines', labelId: 'fill.pattern.style.option.verticalLines' },horizontalLines: { value: 'horizontalLines', labelId: 'fill.pattern.style.option.horizontalLines' },slantedLines: { value: 'slantedLines', labelId: 'fill.pattern.style.option.slantedLines' },squares: { value: 'squares', labelId: 'fill.pattern.style.option.squares' },circles: { value: 'circles', labelId: 'fill.pattern.style.option.circles' } }),
     width: new optionModel.NumberOptionField(),
     height: new optionModel.NumberOptionField(),
     strokeWidth: new optionModel.NumberOptionField()

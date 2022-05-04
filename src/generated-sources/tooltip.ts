@@ -27,12 +27,10 @@ const tooltip: Options<ApexOptions['tooltip']> = {
     format: new optionModel.TextOptionField(),
     formatter: null,
   },
-  y: {
+  y: new optionModel.ListOptionField({
     formatter: null,
-    title: {
-      formatter: null,
-    },
-  },
+    title: { formatter: null },
+  }),
   z: {
     formatter: null,
     title: new optionModel.TextOptionField(),

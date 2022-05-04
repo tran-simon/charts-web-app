@@ -16,24 +16,11 @@ export type Options<T> = { [key in keyof T]: Option<T, key> | null };
 
 /* Option Fields */
 
-export enum FieldType {
-  Bool,
-  Text,
-  Select,
-  Number,
-}
-
 export abstract class OptionField<P = undefined> {
-  private readonly _type: FieldType;
   private readonly _fieldProps: Partial<P> | undefined;
 
-  protected constructor(type: FieldType, fieldProps?: Partial<P>) {
-    this._type = type;
+  protected constructor(fieldProps?: Partial<P>) {
     this._fieldProps = fieldProps;
-  }
-
-  get type(): FieldType {
-    return this._type;
   }
 
   get fieldProps(): Partial<P> | undefined {
@@ -45,7 +32,7 @@ export class TextOptionField<C extends object> extends OptionField<
   TextFieldProps<C>
 > {
   constructor(fieldProps?: Partial<TextFieldProps<C>>) {
-    super(FieldType.Text, fieldProps);
+    super(fieldProps);
   }
 }
 
@@ -59,7 +46,7 @@ export class NumberOptionField<C extends object> extends OptionField<
   NumberFieldProps<C>
 > {
   constructor(fieldProps?: Partial<NumberFieldProps<C>>) {
-    super(FieldType.Number, fieldProps);
+    super(fieldProps);
   }
 }
 
@@ -74,7 +61,7 @@ export class SelectOptionField<
     options: SelectOptions<T>,
     fieldProps?: Partial<SelectFieldProps<T, C, DisableClearable>>,
   ) {
-    super(FieldType.Select, fieldProps);
+    super(fieldProps);
     this._options = options;
   }
 
@@ -87,25 +74,25 @@ export class BoolOptionField<C extends object> extends OptionField<
   BoolFieldProps<C>
 > {
   constructor(fieldProps?: Partial<BoolFieldProps<C>>) {
-    super(FieldType.Bool, fieldProps);
+    super(fieldProps);
   }
 }
 
-export class ListOptionField<P> extends OptionField<P> {
-  private readonly _field: OptionField<P>;
+export class ListOptionField<P, key extends keyof P> extends OptionField<P> {
+  private readonly _option: Option<P, key>;
   /**
    * If true, when rendering the field, an option will be offered to input a singular value
    */
   private readonly _canBeSingular: boolean;
 
-  constructor(field: OptionField<P>, canBeSingular = false) {
-    super(field.type);
-    this._field = field;
+  constructor(option: Option<P, key>, canBeSingular = false) {
+    super();
+    this._option = option;
     this._canBeSingular = canBeSingular;
   }
 
-  get field(): OptionField<P> {
-    return this._field;
+  get option(): Option<P, key> {
+    return this._option;
   }
 
   get canBeSingular(): boolean {

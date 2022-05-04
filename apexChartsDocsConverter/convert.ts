@@ -1,4 +1,5 @@
-import { convertDocValueHardcode, docSectionHardcode } from './hardcode';
+import { convertDocValueHardcode, convertDocSectionHardcode } from './hardcode';
+import startCase from 'lodash/startCase'
 
 export type DocValue = {
   name: string,
@@ -14,6 +15,7 @@ export type DocSection = {
   name: string,
   children: DocOption[],
   path: string[]
+  array?: boolean
   _isDocSection: true,
   _exclude?: boolean
 }
@@ -44,8 +46,10 @@ const validTypes = [
   // TODO(https://github.com/tran-simon/pretty-charts/issues/6): support color
 ]
 
-const mapOptions = (divs: any[], path: string[]):DocOption[]=>{
-  return divs.map((entry) => {
+
+const mapOptions = (divs: any[], path: string[]): { docOptions: DocOption[], stringPaths: string[] } =>{
+  let stringPaths: string [] = [];
+  const res =  divs.map((entry) => {
     const children: any[] = entry?.children || []
 
     const h3Children = children.find((v) => v.tagName === 'h3')?.children || [];
@@ -97,16 +101,8 @@ const mapOptions = (divs: any[], path: string[]):DocOption[]=>{
     }) || [];
 
     const newPath = [...path, name]
-    if (divs.length) {
-      return docSectionHardcode({
-        name,
-        children: mapOptions(divs, newPath),
-        _isDocSection: true,
-        path: newPath
-      })
-    }
 
-    return convertDocValueHardcode({
+    const res = convertDocValueHardcode({
       name,
       type,
       description,
@@ -114,6 +110,22 @@ const mapOptions = (divs: any[], path: string[]):DocOption[]=>{
       _isDocValue: true,
       path: newPath
     });
+
+    stringPaths.push(res.path.join('.'))
+
+    if (divs.length) {
+      const {docOptions, stringPaths: newStringPaths} = mapOptions(divs, newPath);
+      stringPaths.push(...newStringPaths)
+      return convertDocSectionHardcode({
+        name: res.name,
+        children: docOptions,
+        _isDocSection: true,
+        path: newPath,
+        array: !!res.type
+      }, stringPaths)
+    }
+
+    return res
   }).filter((value)=>{
     if (!value || value._exclude) {
       return false
@@ -125,21 +137,43 @@ const mapOptions = (divs: any[], path: string[]):DocOption[]=>{
       return value.type != null && value.name != null;
     }
   });
+
+  return {
+    docOptions: res,
+    stringPaths
+  }
 }
 
-const convert = (jsonData: any, name: string): any => {
+const convert = (jsonData: any, name: string): {
+  convertedCode: any,
+  intl: Record<string, string>
+} => {
   let list: any[] = jsonData[0]?.children || [];
 
   if (jsonData.length > 1) {
     return convert(jsonData.filter((v: any)=>v.tagName === 'div'), name)
   }
 
-  const mappedOptions = mapOptions(list.filter((o) => o.tagName === 'div'), [name])
+  const {docOptions, stringPaths} = mapOptions(list.filter((o) => o.tagName === 'div'), [name]);
 
-  return mappedOptions.reduce((acc, curr)=>{
-    acc[curr.name] = curr
-    return acc
-  }, {} as any)
+  const intl = stringPaths.reduce((acc, curr) => {
+    const lastDotIndex = curr.lastIndexOf('.');
+    if (lastDotIndex !== -1) {
+      acc[curr] = startCase(curr.slice(lastDotIndex));
+    }
+
+    return acc;
+  }, {} as Record<string, string>);
+
+  intl[name] = startCase(name);
+
+  return {
+    convertedCode: docOptions.reduce((acc, curr) => {
+      acc[curr.name] = curr;
+      return acc;
+    }, {} as any),
+    intl
+  };
 }
 
 export default convert

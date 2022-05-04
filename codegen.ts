@@ -1,25 +1,73 @@
 import apexChartsDocsConverter from './apexChartsDocsConverter/main';
 
 const URLS = [
-  {url: "https://apexcharts.com/docs/options/annotations/", name: "annotations"},
+  {
+    url: 'https://apexcharts.com/docs/options/annotations/',
+    name: 'annotations',
+  },
   // {url: "https://apexcharts.com/docs/options/colors/", name: "colors"},
-  {url: "https://apexcharts.com/docs/options/datalabels/", name: "dataLabels"},
-  {url: "https://apexcharts.com/docs/options/fill/", name: "fill"},
-  {url: "https://apexcharts.com/docs/options/forecastdatapoints/", name: "forecastDataPoints"},
-  {url: "https://apexcharts.com/docs/options/grid/", name: "grid"},
+  {
+    url: 'https://apexcharts.com/docs/options/datalabels/',
+    name: 'dataLabels',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/fill/',
+    name: 'fill',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/forecastdatapoints/',
+    name: 'forecastDataPoints',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/grid/',
+    name: 'grid',
+  },
   // {url: "https://apexcharts.com/docs/options/labels/", name: "labels"},
-  {url: "https://apexcharts.com/docs/options/legend/", name: "legend"},
-  {url: "https://apexcharts.com/docs/options/markers/", name: "markers"},
-  {url: "https://apexcharts.com/docs/options/nodata/", name: "noData"},
-  {url: "https://apexcharts.com/docs/options/responsive/", name: "responsive"},
-  {url: "https://apexcharts.com/docs/options/states/", name: "states"},
-  {url: "https://apexcharts.com/docs/options/stroke/", name: "stroke"},
-  {url: "https://apexcharts.com/docs/options/subtitle/", name: "subtitle"},
-  {url: "https://apexcharts.com/docs/options/theme/", name: "theme"},
-  {url: "https://apexcharts.com/docs/options/title/", name: "title"},
-  {url: "https://apexcharts.com/docs/options/tooltip/", name: "tooltip"},
-  {url: "https://apexcharts.com/docs/options/xaxis/", name: "xaxis"},
-  {url: "https://apexcharts.com/docs/options/yaxis/", name: "yaxis"},
+  {
+    url: 'https://apexcharts.com/docs/options/legend/',
+    name: 'legend',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/markers/',
+    name: 'markers',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/nodata/',
+    name: 'noData',
+  },
+  // { url: 'https://apexcharts.com/docs/options/responsive/', name: 'responsive' },
+  {
+    url: 'https://apexcharts.com/docs/options/states/',
+    name: 'states',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/stroke/',
+    name: 'stroke',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/subtitle/',
+    name: 'subtitle',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/theme/',
+    name: 'theme',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/title/',
+    name: 'title',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/tooltip/',
+    name: 'tooltip',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/xaxis/',
+    name: 'xaxis',
+  },
+  {
+    url: 'https://apexcharts.com/docs/options/yaxis/',
+    name: 'yaxis',
+  },
 ];
 
 
@@ -30,7 +78,9 @@ apexChartsDocsConverter(
   names.length ?
     URLS.filter((v) => names.includes(v.name)) :
     URLS,
-  `src/generated-sources`);
+  `src/generated-sources`,
+  `src/generated-sources/locale`,
+);
 
 
 

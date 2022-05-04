@@ -50,7 +50,7 @@
     "lint": "eslint -c .eslintrc.json \"src/**/*.{ts,tsx}\"",
     "codegen": "ts-node codegen.ts",
     "clean-codegen": "rm src/generated-sources/*.ts",
-    "postinstall": "husky install && [ -z \"$(ls -A generated-sources)\" ] && yarn codegen"
+    "postinstall": "husky install"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json}": [

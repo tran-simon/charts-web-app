@@ -10,6 +10,8 @@ describe("convert", ()=>{
   it('can convert', testAll(async (file: string, name: string) => {
     const document = (await JSDOM.fromFile(file)).window.document;
     const jsonData = parseHtml(document);
-    expect(convert(jsonData, name)).toMatchSnapshot(name);
+    const {convertedCode, intl} = convert(jsonData, name);
+    expect( convertedCode).toMatchSnapshot(name);
+    expect(intl).toMatchSnapshot(name + ' intl');
   }));
 })

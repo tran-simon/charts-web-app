@@ -43,15 +43,15 @@ export enum SeriesDataType {
 export const seriesDataType = {
   [SeriesDataType.singleValues]: {
     value: 'singleValues',
-    labelId: 'ChartPropsContext.series.dataType.option.singleValues',
+    labelId: 'series.dataType.option.singleValues',
   },
   [SeriesDataType.pairedValues]: {
     value: 'pairedValues',
-    labelId: 'ChartPropsContext.series.dataType.option.pairedValues',
+    labelId: 'series.dataType.option.pairedValues',
   },
   [SeriesDataType.complexPairedValues]: {
     value: 'complexPairedValues',
-    labelId: 'ChartPropsContext.series.dataType.option.complexPairedValues',
+    labelId: 'series.dataType.option.complexPairedValues',
   },
 };
 
@@ -66,27 +66,27 @@ export const apexAxisChartSeriesOptions: Options<
   }),
   type: new SelectOptionField({
     line: {
-      labelId: 'ChartPropsContext.series.type.option.line',
+      labelId: 'series.type.option.line',
       value: 'line',
     },
     area: {
-      labelId: 'ChartPropsContext.series.type.option.area',
+      labelId: 'series.type.option.area',
       value: 'area',
     },
     column: {
-      labelId: 'ChartPropsContext.series.type.option.column',
+      labelId: 'series.type.option.column',
       value: 'column',
     },
     bar: {
-      labelId: 'ChartPropsContext.series.type.option.bar',
+      labelId: 'series.type.option.bar',
       value: 'bar',
     },
     scatter: {
-      labelId: 'ChartPropsContext.series.type.option.scatter',
+      labelId: 'series.type.option.scatter',
       value: 'scatter',
     },
     bubble: {
-      labelId: 'ChartPropsContext.series.type.option.bubble',
+      labelId: 'series.type.option.bubble',
       value: 'bubble',
     },
   }),

@@ -51,23 +51,23 @@ const fill: Options<ApexOptions['fill']> = {
     style: new optionModel.SelectOptionField({
       verticalLines: {
         value: 'verticalLines',
-        labelId: 'fill.Pattern.style.option.verticalLines',
+        labelId: 'fill.pattern.style.option.verticalLines',
       },
       horizontalLines: {
         value: 'horizontalLines',
-        labelId: 'fill.Pattern.style.option.horizontalLines',
+        labelId: 'fill.pattern.style.option.horizontalLines',
       },
       slantedLines: {
         value: 'slantedLines',
-        labelId: 'fill.Pattern.style.option.slantedLines',
+        labelId: 'fill.pattern.style.option.slantedLines',
       },
       squares: {
         value: 'squares',
-        labelId: 'fill.Pattern.style.option.squares',
+        labelId: 'fill.pattern.style.option.squares',
       },
       circles: {
         value: 'circles',
-        labelId: 'fill.Pattern.style.option.circles',
+        labelId: 'fill.pattern.style.option.circles',
       },
     }),
     width: new optionModel.NumberOptionField(),

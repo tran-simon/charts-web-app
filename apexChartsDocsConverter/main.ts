@@ -1,15 +1,15 @@
-import { generateCode, parseHtml, stringify } from './io';
+import { generateCode, generateIntlCode, parseHtml, stringify } from './io';
 import convert from './convert';
 import axios from 'axios';
 import { JSDOM } from 'jsdom';
 import fs from 'fs/promises';
 
-const main = async (data: any, name: string, outputFile?: string) => {
+const main = async (data: any, name: string, outputFile?: string, intlOutputFile?: string) => {
   console.info(`Converting '${name}'...`);
-  const converted = convert(data, name);
+  const {convertedCode, intl} = convert(data, name);
 
-  const stringRes = stringify(converted);
   try {
+    const stringRes = stringify(convertedCode);
     const code = await generateCode(stringRes, name);
 
     if (!code) {
@@ -21,6 +21,12 @@ const main = async (data: any, name: string, outputFile?: string) => {
     } else {
       console.info(`Convertion successful! Output:`);
       console.info(code);
+    }
+
+    if (intlOutputFile) {
+      const intlCode = await generateIntlCode(intl, name)
+      console.info(`Writing translation file to '${intlOutputFile}'...`);
+      await fs.writeFile(intlOutputFile, intlCode);
     }
     return true;
   } catch (e) {
@@ -47,7 +53,7 @@ Run 'apex-charts-docs-converter --help' for help.
 
 }
 
-export default async (urls: {url: string, name: string}[], outputFolder?: string)=>{
+export default async (urls: {url: string, name: string}[], outputFolder?: string, intlOutputFolder?: string)=>{
   let failed = []
   for (let i = 0; i < urls.length; i++) {
     const {url, name} = urls[i]
@@ -55,7 +61,7 @@ export default async (urls: {url: string, name: string}[], outputFolder?: string
       console.error(`Could not load from url: ${url}.\n`, e)
     }))?.window.document;
     if (document) {
-      const res = await main(parseHtml(document), name, `${outputFolder}/${name}.ts`);
+      const res = await main(parseHtml(document), name, `${outputFolder}/${name}.ts`, `${intlOutputFolder}/${name}_en.ts`);
       if (!res) {
         failed.push(name)
       }

@@ -37,6 +37,30 @@ export default ${name};
   }
 };
 
+export const generateIntlCode = async (data: Record<string, string>, name: string)=>{
+  const res = `
+export default ${JSON.stringify(data, undefined, 2)}
+`;
+  const options = (await prettier.resolveConfig('../.prettierrc.json')) || {
+    'semi': true,
+    'trailingComma': 'all',
+    'singleQuote': true,
+    'tabWidth': 2,
+  };
+  try {
+    return prettier.format(res, {
+      parser: 'babel',
+      ...options,
+    });
+  }
+  catch (e) {
+    console.info("Generated intl code pre-prettifying:\n\n" + res)
+    return Promise.reject(
+      `Failed to prettify the intl code for ${name}: ` + e,
+    );
+  }
+}
+
 export const stringify = (data: any): string => {
   const replacer = (key: string, v: any) => {
     if (isDocValue(v)) {
@@ -85,6 +109,15 @@ export const stringify = (data: any): string => {
         return `null`
       }
     } else if (isDocSection(v)) {
+      if (v.array) {
+        const content = v.children.reduce((acc, curr) => {
+          acc[curr.name] = curr
+          return acc;
+        }, {} as any);
+
+        return  `new optionModel.ListOptionField(${stringify(content).replaceAll('\n', '')})`;
+      }
+
       return  v.children.reduce((acc, curr) => {
         acc[curr.name] = curr
         return acc;

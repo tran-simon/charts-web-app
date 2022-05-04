@@ -7,7 +7,7 @@ const annotations: Options<ApexOptions['annotations']> = {
     front: { value: 'front', labelId: 'annotations.position.option.front' },
     back: { value: 'back', labelId: 'annotations.position.option.back' },
   }),
-  yaxis: {
+  yaxis: new optionModel.ListOptionField({
     y: new optionModel.NumberOptionField(),
     strokeDashArray: new optionModel.NumberOptionField(),
     borderColor: null,
@@ -65,8 +65,8 @@ const annotations: Options<ApexOptions['annotations']> = {
         },
       },
     },
-  },
-  xaxis: {
+  }),
+  xaxis: new optionModel.ListOptionField({
     x: new optionModel.NumberOptionField(),
     strokeDashArray: new optionModel.NumberOptionField(),
     borderColor: null,
@@ -125,8 +125,8 @@ const annotations: Options<ApexOptions['annotations']> = {
         cssClass: new optionModel.TextOptionField(),
       },
     },
-  },
-  points: {
+  }),
+  points: new optionModel.ListOptionField({
     x: new optionModel.TextOptionField(),
     y: new optionModel.NumberOptionField(),
     yAxisIndex: new optionModel.NumberOptionField(),
@@ -198,8 +198,8 @@ const annotations: Options<ApexOptions['annotations']> = {
       offsetX: new optionModel.NumberOptionField(),
       offsetY: new optionModel.NumberOptionField(),
     },
-  },
-  texts: {
+  }),
+  texts: new optionModel.ListOptionField({
     x: new optionModel.NumberOptionField(),
     y: new optionModel.NumberOptionField(),
     text: new optionModel.TextOptionField(),
@@ -226,15 +226,15 @@ const annotations: Options<ApexOptions['annotations']> = {
     paddingRight: new optionModel.NumberOptionField(),
     paddingTop: new optionModel.NumberOptionField(),
     paddingBottom: new optionModel.NumberOptionField(),
-  },
-  images: {
+  }),
+  images: new optionModel.ListOptionField({
     path: new optionModel.TextOptionField(),
     x: new optionModel.NumberOptionField(),
     y: new optionModel.NumberOptionField(),
     width: new optionModel.NumberOptionField(),
     height: new optionModel.NumberOptionField(),
     appendTo: new optionModel.TextOptionField(),
-  },
+  }),
 };
 
 export default annotations;

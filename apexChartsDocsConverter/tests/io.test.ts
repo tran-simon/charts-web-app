@@ -1,4 +1,4 @@
-import { generateCode, parseHtml, stringify } from '../io';
+import { generateCode, generateIntlCode, parseHtml, stringify } from '../io';
 import * as assert from 'assert';
 import { JSDOM } from 'jsdom';
 import fs from 'fs/promises'
@@ -15,16 +15,24 @@ describe('io', ()=>{
   it('can stringify', testAll(async (file: string, name: string) => {
     const document = (await JSDOM.fromFile(file)).window.document;
     const jsonData = parseHtml(document);
-    const converted = convert(jsonData, name);
+    const {convertedCode} = convert(jsonData, name);
 
-    expect(stringify(converted)).toMatchSnapshot(name);
+    expect(stringify(convertedCode)).toMatchSnapshot(name);
   }));
 
 
   it('can generate code', testAll(async (file: string, name: string) => {
     const document = (await JSDOM.fromFile(file)).window.document;
     const jsonData = parseHtml(document);
-    const converted = convert(jsonData, name);
-    expect(await generateCode(stringify(converted), name)).toMatchSnapshot(name);
+    const {convertedCode} = convert(jsonData, name);
+    expect(await generateCode(stringify(convertedCode), name)).toMatchSnapshot(name);
   }));
+
+  it('can generate intl code', testAll(async (file:string, name: string)=>{
+    const document = (await JSDOM.fromFile(file)).window.document;
+    const jsonData = parseHtml(document);
+    const {intl} = convert(jsonData, name);
+
+    expect(await generateIntlCode(intl, name)).toMatchSnapshot(name);
+  }))
 })

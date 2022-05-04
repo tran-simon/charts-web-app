@@ -23,6 +23,13 @@ export const convertDocValueHardcode = (docValue: DocValue)=>{
     }
   }
 
+  if (stringPath.startsWith('fill.Pattern')) {
+    if (docValue.name === 'Pattern') {
+      docValue.name = 'pattern'
+    }
+    docValue.path[1] = 'pattern';
+  }
+
   if (stringPath === 'xaxis.crosshairs.width') {
     // TODO(https://github.com/tran-simon/pretty-charts/issues/2)
     return {
@@ -49,7 +56,7 @@ export const convertDocValueHardcode = (docValue: DocValue)=>{
   return docValue;
 }
 
-export const docSectionHardcode = (docSection: DocSection)=>{
+export const convertDocSectionHardcode = (docSection: DocSection, stringPaths: string[])=>{
   const stringPath = docSection.path?.join('.');
 
   if (pathsToExclude.includes(stringPath)) {
@@ -65,13 +72,15 @@ export const docSectionHardcode = (docSection: DocSection)=>{
   }
 
   if(stringPath === 'xaxis.axisBorder') {
+    const path = ['xaxis', 'axisBorder', 'strokeWidth']
     docSection.children.push({
       name: 'strokeWidth',
       type: 'number',
       description: 'The stroke width',
-      path: ['xaxis', 'axisBorder', 'strokeWidth'],
+      path,
       _isDocValue: true
     })
+    stringPaths.push(path.join('.'))
   }
 
   return docSection

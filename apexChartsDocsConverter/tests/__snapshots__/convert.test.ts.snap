@@ -4,6 +4,7 @@ exports[`convert can convert: annotations 1`] = `
 Object {
   "images": Object {
     "_isDocSection": true,
+    "array": true,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -86,6 +87,7 @@ Object {
   },
   "points": Object {
     "_isDocSection": true,
+    "array": true,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -163,6 +165,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -294,6 +297,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -418,6 +422,7 @@ Object {
           },
           Object {
             "_isDocSection": true,
+            "array": false,
             "children": Array [
               Object {
                 "_isDocValue": true,
@@ -505,6 +510,7 @@ Object {
               },
               Object {
                 "_isDocSection": true,
+                "array": false,
                 "children": Array [
                   Object {
                     "_isDocValue": true,
@@ -595,6 +601,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -692,6 +699,7 @@ Object {
   },
   "texts": Object {
     "_isDocSection": true,
+    "array": true,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -898,6 +906,7 @@ Object {
   },
   "xaxis": Object {
     "_isDocSection": true,
+    "array": true,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -997,6 +1006,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -1166,6 +1176,7 @@ Object {
           },
           Object {
             "_isDocSection": true,
+            "array": false,
             "children": Array [
               Object {
                 "_isDocValue": true,
@@ -1263,6 +1274,7 @@ Object {
   },
   "yaxis": Object {
     "_isDocSection": true,
+    "array": true,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -1386,6 +1398,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -1526,6 +1539,7 @@ Object {
           },
           Object {
             "_isDocSection": true,
+            "array": false,
             "children": Array [
               Object {
                 "_isDocValue": true,
@@ -1613,6 +1627,7 @@ Object {
               },
               Object {
                 "_isDocSection": true,
+                "array": false,
                 "children": Array [
                   Object {
                     "_isDocValue": true,
@@ -1711,6 +1726,141 @@ Object {
 }
 `;
 
+exports[`convert can convert: annotations intl 1`] = `
+Object {
+  "annotations": "Annotations",
+  "annotations.images": "Images",
+  "annotations.images.appendTo": "Append To",
+  "annotations.images.height": "Height",
+  "annotations.images.path": "Path",
+  "annotations.images.width": "Width",
+  "annotations.images.x": "X",
+  "annotations.images.y": "Y",
+  "annotations.points": "Points",
+  "annotations.points.image": "Image",
+  "annotations.points.image.height": "Height",
+  "annotations.points.image.offsetX": "Offset X",
+  "annotations.points.image.offsetY": "Offset Y",
+  "annotations.points.image.path": "Path",
+  "annotations.points.image.width": "Width",
+  "annotations.points.label": "Label",
+  "annotations.points.label.borderColor": "Border Color",
+  "annotations.points.label.borderRadius": "Border Radius",
+  "annotations.points.label.borderWidth": "Border Width",
+  "annotations.points.label.mouseEnter": "Mouse Enter",
+  "annotations.points.label.mouseLeave": "Mouse Leave",
+  "annotations.points.label.offsetX": "Offset X",
+  "annotations.points.label.offsetY": "Offset Y",
+  "annotations.points.label.style": "Style",
+  "annotations.points.label.style.background": "Background",
+  "annotations.points.label.style.color": "Color",
+  "annotations.points.label.style.cssClass": "Css Class",
+  "annotations.points.label.style.fontFamily": "Font Family",
+  "annotations.points.label.style.fontSize": "Font Size",
+  "annotations.points.label.style.fontWeight": "Font Weight",
+  "annotations.points.label.style.padding": "Padding",
+  "annotations.points.label.style.padding.bottom": "Bottom",
+  "annotations.points.label.style.padding.left": "Left",
+  "annotations.points.label.style.padding.right": "Right",
+  "annotations.points.label.style.padding.top": "Top",
+  "annotations.points.label.text": "Text",
+  "annotations.points.label.textAnchor": "Text Anchor",
+  "annotations.points.marker": "Marker",
+  "annotations.points.marker.cssClass": "Css Class",
+  "annotations.points.marker.fillColor": "Fill Color",
+  "annotations.points.marker.offsetX": "Offset X",
+  "annotations.points.marker.offsetY": "Offset Y",
+  "annotations.points.marker.radius": "Radius",
+  "annotations.points.marker.shape": "Shape",
+  "annotations.points.marker.size": "Size",
+  "annotations.points.marker.strokeColor": "Stroke Color",
+  "annotations.points.marker.strokeWidth": "Stroke Width",
+  "annotations.points.mouseEnter": "Mouse Enter",
+  "annotations.points.mouseLeave": "Mouse Leave",
+  "annotations.points.seriesIndex": "Series Index",
+  "annotations.points.x": "X",
+  "annotations.points.y": "Y",
+  "annotations.points.yAxisIndex": "Y Axis Index",
+  "annotations.position": "Position",
+  "annotations.texts": "Texts",
+  "annotations.texts.appendTo": "Append To",
+  "annotations.texts.borderColor": "Border Color",
+  "annotations.texts.borderRadius": "Border Radius",
+  "annotations.texts.borderWidth": "Border Width",
+  "annotations.texts.color": "Color",
+  "annotations.texts.fontFamily": "Font Family",
+  "annotations.texts.fontSize": "Font Size",
+  "annotations.texts.fontWeight": "Font Weight",
+  "annotations.texts.paddingBottom": "Padding Bottom",
+  "annotations.texts.paddingLeft": "Padding Left",
+  "annotations.texts.paddingRight": "Padding Right",
+  "annotations.texts.paddingTop": "Padding Top",
+  "annotations.texts.text": "Text",
+  "annotations.texts.textAnchor": "Text Anchor",
+  "annotations.texts.x": "X",
+  "annotations.texts.y": "Y",
+  "annotations.xaxis": "Xaxis",
+  "annotations.xaxis.borderColor": "Border Color",
+  "annotations.xaxis.fillColor": "Fill Color",
+  "annotations.xaxis.label": "Label",
+  "annotations.xaxis.label.borderColor": "Border Color",
+  "annotations.xaxis.label.borderRadius": "Border Radius",
+  "annotations.xaxis.label.borderWidth": "Border Width",
+  "annotations.xaxis.label.mouseEnter": "Mouse Enter",
+  "annotations.xaxis.label.mouseLeave": "Mouse Leave",
+  "annotations.xaxis.label.offsetX": "Offset X",
+  "annotations.xaxis.label.offsetY": "Offset Y",
+  "annotations.xaxis.label.orientation": "Orientation",
+  "annotations.xaxis.label.position": "Position",
+  "annotations.xaxis.label.style": "Style",
+  "annotations.xaxis.label.style.color": "Color",
+  "annotations.xaxis.label.style.cssClass": "Css Class",
+  "annotations.xaxis.label.style.fontFamily": "Font Family",
+  "annotations.xaxis.label.style.fontSize": "Font Size",
+  "annotations.xaxis.label.style.fontWeight": "Font Weight",
+  "annotations.xaxis.label.text": "Text",
+  "annotations.xaxis.label.textAnchor": "Text Anchor",
+  "annotations.xaxis.offsetX": "Offset X",
+  "annotations.xaxis.offsetY": "Offset Y",
+  "annotations.xaxis.opacity": "Opacity",
+  "annotations.xaxis.strokeDashArray": "Stroke Dash Array",
+  "annotations.xaxis.x": "X",
+  "annotations.yaxis": "Yaxis",
+  "annotations.yaxis.borderColor": "Border Color",
+  "annotations.yaxis.fillColor": "Fill Color",
+  "annotations.yaxis.label": "Label",
+  "annotations.yaxis.label.borderColor": "Border Color",
+  "annotations.yaxis.label.borderRadius": "Border Radius",
+  "annotations.yaxis.label.borderWidth": "Border Width",
+  "annotations.yaxis.label.mouseEnter": "Mouse Enter",
+  "annotations.yaxis.label.mouseLeave": "Mouse Leave",
+  "annotations.yaxis.label.offsetX": "Offset X",
+  "annotations.yaxis.label.offsetY": "Offset Y",
+  "annotations.yaxis.label.position": "Position",
+  "annotations.yaxis.label.style": "Style",
+  "annotations.yaxis.label.style.background": "Background",
+  "annotations.yaxis.label.style.color": "Color",
+  "annotations.yaxis.label.style.cssClass": "Css Class",
+  "annotations.yaxis.label.style.fontFamily": "Font Family",
+  "annotations.yaxis.label.style.fontSize": "Font Size",
+  "annotations.yaxis.label.style.fontWeight": "Font Weight",
+  "annotations.yaxis.label.style.padding": "Padding",
+  "annotations.yaxis.label.style.padding.bottom": "Bottom",
+  "annotations.yaxis.label.style.padding.left": "Left",
+  "annotations.yaxis.label.style.padding.right": "Right",
+  "annotations.yaxis.label.style.padding.top": "Top",
+  "annotations.yaxis.label.text": "Text",
+  "annotations.yaxis.label.textAnchor": "Text Anchor",
+  "annotations.yaxis.offsetX": "Offset X",
+  "annotations.yaxis.offsetY": "Offset Y",
+  "annotations.yaxis.opacity": "Opacity",
+  "annotations.yaxis.strokeDashArray": "Stroke Dash Array",
+  "annotations.yaxis.width": "Width",
+  "annotations.yaxis.y": "Y",
+  "annotations.yaxis.yAxisIndex": "Y Axis Index",
+}
+`;
+
 exports[`convert can convert: fill 1`] = `
 Object {
   "colors": Object {
@@ -1726,6 +1876,7 @@ Object {
   },
   "gradient": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -1852,6 +2003,7 @@ Object {
   },
   "image": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -1909,6 +2061,7 @@ Object {
   },
   "pattern": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -1923,7 +2076,7 @@ Object {
         ],
         "path": Array [
           "fill",
-          "Pattern",
+          "pattern",
           "style",
         ],
         "type": "string",
@@ -1935,7 +2088,7 @@ Object {
         "options": undefined,
         "path": Array [
           "fill",
-          "Pattern",
+          "pattern",
           "width",
         ],
         "type": "number",
@@ -1947,7 +2100,7 @@ Object {
         "options": undefined,
         "path": Array [
           "fill",
-          "Pattern",
+          "pattern",
           "height",
         ],
         "type": "number",
@@ -1959,7 +2112,7 @@ Object {
         "options": undefined,
         "path": Array [
           "fill",
-          "Pattern",
+          "pattern",
           "strokeWidth",
         ],
         "type": "number",
@@ -1987,6 +2140,34 @@ Object {
     ],
     "type": "any",
   },
+}
+`;
+
+exports[`convert can convert: fill intl 1`] = `
+Object {
+  "fill": "Fill",
+  "fill.colors": "Colors",
+  "fill.gradient": "Gradient",
+  "fill.gradient.colorStops": "Color Stops",
+  "fill.gradient.gradientToColors": "Gradient To Colors",
+  "fill.gradient.inverseColors": "Inverse Colors",
+  "fill.gradient.opacityFrom": "Opacity From",
+  "fill.gradient.opacityTo": "Opacity To",
+  "fill.gradient.shade": "Shade",
+  "fill.gradient.shadeIntensity": "Shade Intensity",
+  "fill.gradient.stops": "Stops",
+  "fill.gradient.type": "Type",
+  "fill.image": "Image",
+  "fill.image.height": "Height",
+  "fill.image.src": "Src",
+  "fill.image.width": "Width",
+  "fill.opacity": "Opacity",
+  "fill.pattern": "Pattern",
+  "fill.pattern.height": "Height",
+  "fill.pattern.strokeWidth": "Stroke Width",
+  "fill.pattern.style": "Style",
+  "fill.pattern.width": "Width",
+  "fill.type": "Type",
 }
 `;
 
@@ -2027,6 +2208,7 @@ Object {
   },
   "hover": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -2197,6 +2379,30 @@ Object {
 }
 `;
 
+exports[`convert can convert: markers intl 1`] = `
+Object {
+  "markers": "Markers",
+  "markers.colors": "Colors",
+  "markers.discrete": "Discrete",
+  "markers.fillOpacity": "Fill Opacity",
+  "markers.hover": "Hover",
+  "markers.hover.size": "Size",
+  "markers.hover.sizeOffset": "Size Offset",
+  "markers.offsetX": "Offset X",
+  "markers.offsetY": "Offset Y",
+  "markers.onClick": "On Click",
+  "markers.onDblClick": "On Dbl Click",
+  "markers.radius": "Radius",
+  "markers.shape": "Shape",
+  "markers.showNullDataPoints": "Show Null Data Points",
+  "markers.size": "Size",
+  "markers.strokeColors": "Stroke Colors",
+  "markers.strokeDashArray": "Stroke Dash Array",
+  "markers.strokeOpacity": "Stroke Opacity",
+  "markers.strokeWidth": "Stroke Width",
+}
+`;
+
 exports[`convert can convert: noData 1`] = `
 Object {
   "align": Object {
@@ -2238,6 +2444,7 @@ Object {
   },
   "style": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -2308,6 +2515,21 @@ Object {
     ],
     "type": "string",
   },
+}
+`;
+
+exports[`convert can convert: noData intl 1`] = `
+Object {
+  "noData": "No Data",
+  "noData.align": "Align",
+  "noData.offsetX": "Offset X",
+  "noData.offsetY": "Offset Y",
+  "noData.style": "Style",
+  "noData.style.color": "Color",
+  "noData.style.fontFamily": "Font Family",
+  "noData.style.fontSize": "Font Size",
+  "noData.text": "Text",
+  "noData.verticalAlign": "Vertical Align",
 }
 `;
 
@@ -2390,6 +2612,18 @@ Object {
 }
 `;
 
+exports[`convert can convert: stroke intl 1`] = `
+Object {
+  "stroke": "Stroke",
+  "stroke.colors": "Colors",
+  "stroke.curve": "Curve",
+  "stroke.dashArray": "Dash Array",
+  "stroke.lineCap": "Line Cap",
+  "stroke.show": "Show",
+  "stroke.width": "Width",
+}
+`;
+
 exports[`convert can convert: title 1`] = `
 Object {
   "align": Object {
@@ -2453,6 +2687,7 @@ Object {
   },
   "style": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -2523,10 +2758,28 @@ Object {
 }
 `;
 
+exports[`convert can convert: title intl 1`] = `
+Object {
+  "title": "Title",
+  "title.align": "Align",
+  "title.floating": "Floating",
+  "title.margin": "Margin",
+  "title.offsetX": "Offset X",
+  "title.offsetY": "Offset Y",
+  "title.style": "Style",
+  "title.style.color": "Color",
+  "title.style.fontFamily": "Font Family",
+  "title.style.fontSize": "Font Size",
+  "title.style.fontWeight": "Font Weight",
+  "title.text": "Text",
+}
+`;
+
 exports[`convert can convert: xaxis 1`] = `
 Object {
   "axisBorder": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -2596,6 +2849,7 @@ Object {
   },
   "axisTicks": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -2692,6 +2946,7 @@ Object {
   },
   "crosshairs": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -2746,6 +3001,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -2796,6 +3052,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -2828,6 +3085,7 @@ Object {
           },
           Object {
             "_isDocSection": true,
+            "array": false,
             "children": Array [
               Object {
                 "_isDocValue": true,
@@ -2918,6 +3176,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -3023,6 +3282,7 @@ Object {
   },
   "labels": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -3122,6 +3382,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -3246,6 +3507,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -3400,6 +3662,7 @@ Object {
   },
   "title": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -3439,6 +3702,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -3522,6 +3786,7 @@ Object {
   },
   "tooltip": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -3561,6 +3826,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -3621,10 +3887,110 @@ Object {
 }
 `;
 
+exports[`convert can convert: xaxis intl 1`] = `
+Object {
+  "xaxis": "Xaxis",
+  "xaxis.axisBorder": "Axis Border",
+  "xaxis.axisBorder.color": "Color",
+  "xaxis.axisBorder.height": "Height",
+  "xaxis.axisBorder.offsetX": "Offset X",
+  "xaxis.axisBorder.offsetY": "Offset Y",
+  "xaxis.axisBorder.show": "Show",
+  "xaxis.axisBorder.strokeWidth": "Stroke Width",
+  "xaxis.axisBorder.width": "Width",
+  "xaxis.axisTicks": "Axis Ticks",
+  "xaxis.axisTicks.borderType": "Border Type",
+  "xaxis.axisTicks.color": "Color",
+  "xaxis.axisTicks.height": "Height",
+  "xaxis.axisTicks.offsetX": "Offset X",
+  "xaxis.axisTicks.offsetY": "Offset Y",
+  "xaxis.axisTicks.show": "Show",
+  "xaxis.categories": "Categories",
+  "xaxis.crosshairs": "Crosshairs",
+  "xaxis.crosshairs.dropShadow": "Drop Shadow",
+  "xaxis.crosshairs.dropShadow.blur": "Blur",
+  "xaxis.crosshairs.dropShadow.enabled": "Enabled",
+  "xaxis.crosshairs.dropShadow.left": "Left",
+  "xaxis.crosshairs.dropShadow.opacity": "Opacity",
+  "xaxis.crosshairs.dropShadow.top": "Top",
+  "xaxis.crosshairs.fill": "Fill",
+  "xaxis.crosshairs.fill.color": "Color",
+  "xaxis.crosshairs.fill.gradient": "Gradient",
+  "xaxis.crosshairs.fill.gradient.colorFrom": "Color From",
+  "xaxis.crosshairs.fill.gradient.colorTo": "Color To",
+  "xaxis.crosshairs.fill.gradient.opacityFrom": "Opacity From",
+  "xaxis.crosshairs.fill.gradient.opacityTo": "Opacity To",
+  "xaxis.crosshairs.fill.gradient.stops": "Stops",
+  "xaxis.crosshairs.fill.type": "Type",
+  "xaxis.crosshairs.opacity": "Opacity",
+  "xaxis.crosshairs.position": "Position",
+  "xaxis.crosshairs.show": "Show",
+  "xaxis.crosshairs.stroke": "Stroke",
+  "xaxis.crosshairs.stroke.color": "Color",
+  "xaxis.crosshairs.stroke.dashArray": "Dash Array",
+  "xaxis.crosshairs.stroke.width": "Width",
+  "xaxis.crosshairs.width": "Width",
+  "xaxis.decimalsInFloat": "Decimals In Float",
+  "xaxis.floating": "Floating",
+  "xaxis.labels": "Labels",
+  "xaxis.labels.datetimeFormatter": "Datetime Formatter",
+  "xaxis.labels.datetimeFormatter.day": "Day",
+  "xaxis.labels.datetimeFormatter.hour": "Hour",
+  "xaxis.labels.datetimeFormatter.month": "Month",
+  "xaxis.labels.datetimeFormatter.year": "Year",
+  "xaxis.labels.datetimeUTC": "Datetime UTC",
+  "xaxis.labels.format": "Format",
+  "xaxis.labels.formatter": "Formatter",
+  "xaxis.labels.formatter.": "",
+  "xaxis.labels.hideOverlappingLabels": "Hide Overlapping Labels",
+  "xaxis.labels.maxHeight": "Max Height",
+  "xaxis.labels.minHeight": "Min Height",
+  "xaxis.labels.offsetX": "Offset X",
+  "xaxis.labels.offsetY": "Offset Y",
+  "xaxis.labels.rotate": "Rotate",
+  "xaxis.labels.rotateAlways": "Rotate Always",
+  "xaxis.labels.show": "Show",
+  "xaxis.labels.showDuplicates": "Show Duplicates",
+  "xaxis.labels.style": "Style",
+  "xaxis.labels.style.colors": "Colors",
+  "xaxis.labels.style.cssClass": "Css Class",
+  "xaxis.labels.style.fontFamily": "Font Family",
+  "xaxis.labels.style.fontSize": "Font Size",
+  "xaxis.labels.style.fontWeight": "Font Weight",
+  "xaxis.labels.trim": "Trim",
+  "xaxis.max": "Max",
+  "xaxis.min": "Min",
+  "xaxis.overwriteCategories": "Overwrite Categories",
+  "xaxis.position": "Position",
+  "xaxis.range": "Range",
+  "xaxis.tickAmount": "Tick Amount",
+  "xaxis.tickPlacement": "Tick Placement",
+  "xaxis.title": "Title",
+  "xaxis.title.offsetX": "Offset X",
+  "xaxis.title.offsetY": "Offset Y",
+  "xaxis.title.style": "Style",
+  "xaxis.title.style.color": "Color",
+  "xaxis.title.style.cssClass": "Css Class",
+  "xaxis.title.style.fontFamily": "Font Family",
+  "xaxis.title.style.fontSize": "Font Size",
+  "xaxis.title.style.fontWeight": "Font Weight",
+  "xaxis.title.text": "Text",
+  "xaxis.tooltip": "Tooltip",
+  "xaxis.tooltip.enabled": "Enabled",
+  "xaxis.tooltip.formatter": "Formatter",
+  "xaxis.tooltip.offsetY": "Offset Y",
+  "xaxis.tooltip.style": "Style",
+  "xaxis.tooltip.style.fontFamily": "Font Family",
+  "xaxis.tooltip.style.fontSize": "Font Size",
+  "xaxis.type": "Type",
+}
+`;
+
 exports[`convert can convert: yaxis 1`] = `
 Object {
   "axisBorder": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -3683,6 +4049,7 @@ Object {
   },
   "axisTicks": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -3753,6 +4120,7 @@ Object {
   },
   "crosshairs": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -3783,6 +4151,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -3874,6 +4243,7 @@ Object {
   },
   "labels": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -3929,6 +4299,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -4181,6 +4552,7 @@ Object {
   },
   "title": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -4232,6 +4604,7 @@ Object {
       },
       Object {
         "_isDocSection": true,
+        "array": false,
         "children": Array [
           Object {
             "_isDocValue": true,
@@ -4315,6 +4688,7 @@ Object {
   },
   "tooltip": Object {
     "_isDocSection": true,
+    "array": false,
     "children": Array [
       Object {
         "_isDocValue": true,
@@ -4347,5 +4721,75 @@ Object {
       "tooltip",
     ],
   },
+}
+`;
+
+exports[`convert can convert: yaxis intl 1`] = `
+Object {
+  "yaxis": "Yaxis",
+  "yaxis.axisBorder": "Axis Border",
+  "yaxis.axisBorder.color": "Color",
+  "yaxis.axisBorder.offsetX": "Offset X",
+  "yaxis.axisBorder.offsetY": "Offset Y",
+  "yaxis.axisBorder.show": "Show",
+  "yaxis.axisTicks": "Axis Ticks",
+  "yaxis.axisTicks.borderType": "Border Type",
+  "yaxis.axisTicks.color": "Color",
+  "yaxis.axisTicks.offsetX": "Offset X",
+  "yaxis.axisTicks.offsetY": "Offset Y",
+  "yaxis.axisTicks.show": "Show",
+  "yaxis.axisTicks.width": "Width",
+  "yaxis.crosshairs": "Crosshairs",
+  "yaxis.crosshairs.position": "Position",
+  "yaxis.crosshairs.show": "Show",
+  "yaxis.crosshairs.stroke": "Stroke",
+  "yaxis.crosshairs.stroke.color": "Color",
+  "yaxis.crosshairs.stroke.dashArray": "Dash Array",
+  "yaxis.crosshairs.stroke.width": "Width",
+  "yaxis.decimalsInFloat": "Decimals In Float",
+  "yaxis.floating": "Floating",
+  "yaxis.forceNiceScale": "Force Nice Scale",
+  "yaxis.labels": "Labels",
+  "yaxis.labels.align": "Align",
+  "yaxis.labels.formatter": "Formatter",
+  "yaxis.labels.maxWidth": "Max Width",
+  "yaxis.labels.minWidth": "Min Width",
+  "yaxis.labels.offsetX": "Offset X",
+  "yaxis.labels.offsetY": "Offset Y",
+  "yaxis.labels.rotate": "Rotate",
+  "yaxis.labels.show": "Show",
+  "yaxis.labels.style": "Style",
+  "yaxis.labels.style.colors": "Colors",
+  "yaxis.labels.style.cssClass": "Css Class",
+  "yaxis.labels.style.fontFamily": "Font Family",
+  "yaxis.labels.style.fontSize": "Font Size",
+  "yaxis.labels.style.fontWeight": "Font Weight",
+  "yaxis.logBase": "Log Base",
+  "yaxis.logarithmic": "Logarithmic",
+  "yaxis.max": "Max",
+  "yaxis.min": "Min",
+  "yaxis.opposite": "Opposite",
+  "yaxis.position": "Position",
+  "yaxis.range": "Range",
+  "yaxis.reversed": "Reversed",
+  "yaxis.seriesName": "Series Name",
+  "yaxis.show": "Show",
+  "yaxis.showAlways": "Show Always",
+  "yaxis.showForNullSeries": "Show For Null Series",
+  "yaxis.tickAmount": "Tick Amount",
+  "yaxis.title": "Title",
+  "yaxis.title.offsetX": "Offset X",
+  "yaxis.title.offsetY": "Offset Y",
+  "yaxis.title.rotate": "Rotate",
+  "yaxis.title.style": "Style",
+  "yaxis.title.style.color": "Color",
+  "yaxis.title.style.cssClass": "Css Class",
+  "yaxis.title.style.fontFamily": "Font Family",
+  "yaxis.title.style.fontSize": "Font Size",
+  "yaxis.title.style.fontWeight": "Font Weight",
+  "yaxis.title.text": "Text",
+  "yaxis.tooltip": "Tooltip",
+  "yaxis.tooltip.enabled": "Enabled",
+  "yaxis.tooltip.offsetX": "Offset X",
 }
 `;
