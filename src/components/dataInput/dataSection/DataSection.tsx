@@ -4,12 +4,9 @@ import { ChartPropsContext } from '../../../providers/ChartProviders';
 import { OptionDetails } from '../OptionSection';
 import { apexAxisChartSeriesOptions } from '../../../model/apexFields/reactApexModel';
 
-import SeriesTabs, {
-  SeriesTabsContext,
-  SeriesTabsProvider,
-} from './SeriesTabs';
-import { Path } from '../../../utils/utils';
-import GenericField from '../../fields/Field';
+import TabsProvider, { TabsContext } from '../../../providers/TabsProvider';
+import SeriesTabs from './SeriesTabs';
+import JsonField from '../../fields/JsonField';
 
 const DataSection = () => {
   return (
@@ -37,7 +34,7 @@ const DataSection = () => {
 };
 
 const SeriesSection = () => {
-  const { tab } = useContext(SeriesTabsContext);
+  const { tab } = useContext(TabsContext);
   const path = useMemo(() => ['series', tab], [tab]);
   return (
     <>
@@ -61,36 +58,18 @@ const SeriesSection = () => {
         omit={['data']} //todo: improve this
         path={path}
       />
-      <SeriesDataInput path={path} />
+      <JsonField
+        path={[...path, 'data']}
+        fullWidth
+        rows={6}
+        Context={ChartPropsContext}
+      />
     </>
   );
 };
 
-const SeriesDataInput = ({ path }: { path: Path }) => {
-  return (
-    <GenericField
-      path={[...path, 'data']}
-      convert={(v) => {
-        if (v == null) {
-          return [];
-        }
-
-        // TODO(https://github.com/tran-simon/charts-web-app/issues/4): implement validation
-
-        return JSON.parse(v);
-      }}
-      convertToString={(v) => JSON.stringify(v)}
-      fullWidth
-      multiline
-      disableClearable
-      rows={6}
-      Context={ChartPropsContext}
-    />
-  );
-};
-
-export default (props: any) => (
-  <SeriesTabsProvider>
-    <DataSection {...props} />
-  </SeriesTabsProvider>
-);
+export default React.memo(() => (
+  <TabsProvider>
+    <DataSection />
+  </TabsProvider>
+));

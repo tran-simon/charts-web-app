@@ -44,6 +44,9 @@ export const GenericChartProvider = <T extends object>({
 
   const getOption = useCallback(
     (path: Path) => {
+      if (!path.length) {
+        return options;
+      }
       return _get(options, path);
     },
     [options],
@@ -52,6 +55,9 @@ export const GenericChartProvider = <T extends object>({
   const setOption = useCallback(
     (path: Path, value: any) => {
       setOptions((o) => {
+        if (!path.length) {
+          return value;
+        }
         if (value !== undefined) {
           _set(o, path, value);
         } else {

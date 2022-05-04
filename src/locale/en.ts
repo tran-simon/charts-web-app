@@ -4,6 +4,7 @@ export default {
   /* Buttons */
   'button.add': 'Add',
   'button.remove': 'Remove',
+  'button.code.tooltip': 'Show code editor',
 
   /* Checkboxes */
   'checkbox.list': 'List ?',

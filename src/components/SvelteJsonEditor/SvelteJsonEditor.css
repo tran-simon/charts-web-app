@@ -1,0 +1,7 @@
+.svelte-jsoneditor-react {
+    display: flex;
+    flex: 1;
+}
+.svelte-jsoneditor-react .absolute-popup .absolute-popup-content {
+    left: 1rem !important
+}

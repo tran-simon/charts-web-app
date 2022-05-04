@@ -1,20 +1,18 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import { Box, styled } from '@mui/material';
+import React, { useContext, useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
 import ChartProviders, {
   ChartContext,
   ChartPropsContext,
 } from '../../providers/ChartProviders';
-import { OptionDetails } from '../../components/dataInput/OptionSection';
-import apexOptionsModel from '../../model/apexFields/apexOptionsModel';
-import { Mosaic, MosaicWindow } from 'react-mosaic-component';
-
+import { Mosaic, MosaicBranch, MosaicWindow } from 'react-mosaic-component';
 import { MosaicKey } from 'react-mosaic-component/lib/types';
 import { useIntlFormatter } from '../../utils/utils';
 import './app.css';
 import 'react-mosaic-component/react-mosaic-component.css';
 import cloneDeep from 'lodash/cloneDeep';
 import DataSection from '../../components/dataInput/dataSection/DataSection';
+import WindowContent from '../../components/WindowContent';
+import OptionsWindow from '../options/OptionsWindow';
 
 declare module 'react-mosaic-component' {
   /*
@@ -30,48 +28,48 @@ declare module 'react-mosaic-component' {
 
 type ViewId = 'options-window' | 'chart-window' | 'data-window';
 
-const WindowContent = styled(Box)({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-});
-
 const Main = () => {
   const t = useIntlFormatter();
-  const windowMap: { [key in ViewId]: ReactNode } = {
-    'options-window': (
-      <WindowContent overflow="auto" paddingX={2}>
-        <OptionDetails Context={ChartContext} options={apexOptionsModel} />
-      </WindowContent>
-    ),
-    'chart-window': (
-      <WindowContent>
-        <ChartSection />
-      </WindowContent>
-    ),
-    'data-window': (
-      <WindowContent>
-        {/*TODO*/}
-        <DataSection />
-      </WindowContent>
-    ),
+
+  const renderTile = (id: string, path: MosaicBranch[]): JSX.Element => {
+    switch (id) {
+      case 'options-window':
+        return <OptionsWindow path={path} />;
+      case 'chart-window':
+        return (
+          <MosaicWindow<ViewId>
+            title={t('window.chart-window')}
+            path={path}
+            toolbarControls={<></>}
+          >
+            <WindowContent>
+              <ChartSection />
+            </WindowContent>
+          </MosaicWindow>
+        );
+      case 'data-window':
+        return (
+          <MosaicWindow<ViewId>
+            title={t('window.data-window')}
+            path={path}
+            toolbarControls={<></>}
+          >
+            <WindowContent>
+              {/*TODO*/}
+              <DataSection />
+            </WindowContent>
+          </MosaicWindow>
+        );
+      default:
+        return <></>;
+    }
   };
 
   return (
     <ChartProviders>
       <main>
         <Mosaic<string>
-          renderTile={(id, path) => (
-            <MosaicWindow<ViewId>
-              title={t('window.' + id)}
-              path={path}
-              toolbarControls={<></>}
-            >
-              {windowMap[id as ViewId]}
-            </MosaicWindow>
-          )}
+          renderTile={renderTile}
           initialValue={{
             direction: 'row',
             first: 'options-window',
@@ -89,7 +87,7 @@ const Main = () => {
   );
 };
 
-const ChartSection = () => {
+const ChartSection = React.memo(() => {
   const { options: chartProps } = useContext(ChartPropsContext);
   const { options } = useContext(ChartContext);
   const [state, setState] = useState(0);
@@ -105,6 +103,6 @@ const ChartSection = () => {
       {...chartProps}
     />
   );
-};
+});
 
 export default Main;

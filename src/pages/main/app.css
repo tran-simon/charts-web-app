@@ -5,4 +5,19 @@ main{
     width: 100%;
     height: 100%;
     margin: 0;
+
+}
+
+main .mosaic-root .mosaic-tile .mosaic-window .mosaic-window-body{
+    z-index: unset
+}
+main .mosaic-root .mosaic-tile .mosaic-window .mosaic-preview{
+    visibility: hidden;
+}
+
+main .mosaic-root .mosaic-tile .mosaic-window .mosaic-window-toolbar{
+    height: 1.5rem
+}
+main .mosaic-root .mosaic-tile .mosaic-window .mosaic-window-toolbar .mosaic-window-controls {
+    height: unset
 }

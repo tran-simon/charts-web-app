@@ -1,6 +1,5 @@
 import { makeStyles } from '@mui/styles';
-import { SetState } from '../../../utils/utils';
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ChartPropsContext } from '../../../providers/ChartProviders';
 import {
   Box,
@@ -24,32 +23,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { TypeOption } from '../../../model/apexFields/reactApexModel';
 import AddIcon from '@mui/icons-material/Add';
 import { FormattedMessage } from 'react-intl';
-import noop from 'lodash/noop';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-
-export type ISeriesTabsContext = {
-  tab: number;
-  setTab: SetState<number>;
-};
-
-export const SeriesTabsContext = createContext<ISeriesTabsContext>({
-  tab: 0,
-  setTab: noop,
-});
-
-export const SeriesTabsProvider = ({ children }: { children: ReactNode }) => {
-  const [tab, setTab] = useState(0);
-  return (
-    <SeriesTabsContext.Provider
-      value={{
-        tab,
-        setTab,
-      }}
-    >
-      {children}
-    </SeriesTabsContext.Provider>
-  );
-};
+import { TabsContext } from '../../../providers/TabsProvider';
 
 const useSeriesTabsStyle = makeStyles({
   flexContainer: { alignItems: 'center' },
@@ -61,18 +36,19 @@ export default () => {
     options: { series = [] },
     setOption,
   } = useContext(ChartPropsContext);
-  const { tab, setTab } = useContext(SeriesTabsContext);
+  const { tab, setTab } = useContext(TabsContext);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const [confirm, setConfirm] = useState<number | undefined>();
 
   return (
-    <Box display="flex">
+    <Box display="flex" alignItems="center">
       <IconButton
         onClick={(e) => setAnchorEl(e.currentTarget)}
         sx={{
-          height: '100%',
-          margin: 1,
+          marginLeft: 1,
+          marginRight: 1,
         }}
+        size="small"
       >
         <MenuIcon />
       </IconButton>
@@ -115,9 +91,10 @@ export default () => {
           );
         }}
         sx={{
-          height: '100%',
-          margin: 1,
+          marginLeft: 1,
+          marginRight: 1,
         }}
+        size="small"
       >
         <AddIcon />
       </IconButton>
@@ -140,7 +117,7 @@ const SeriesTab = ({
   const {
     options: { series = [] },
   } = useContext(ChartPropsContext);
-  const { setTab } = useContext(SeriesTabsContext);
+  const { setTab } = useContext(TabsContext);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const seriesVal = series[id];
@@ -196,7 +173,7 @@ const SeriesTabsMenu = ({
 }: Partial<MenuProps> & {
   close: () => void;
 }) => {
-  const { setTab } = useContext(SeriesTabsContext);
+  const { setTab } = useContext(TabsContext);
 
   const {
     options: { series = [] },
@@ -246,7 +223,7 @@ const SeriesTabsDialog = ({
   tabNumber: number | undefined;
   close: () => void;
 }) => {
-  const { tab, setTab } = useContext(SeriesTabsContext);
+  const { tab, setTab } = useContext(TabsContext);
   const {
     options: { series = [] },
     setOption,
